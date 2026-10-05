@@ -10,3 +10,20 @@
   --sombra: 0 18px 35px rgba(75, 7, 7, 0.18);
   --transicao: 0.25s ease;
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f5ece0; color: var(--cor-texto); font: 16px 'Sulphur Point', Arial, sans-serif; }
+a { text-decoration: none; color: inherit; }
+
+/* MOdelo letra */
+.admin-logo .logo-texto, .pagina-titulo, .resumo-card h3, .bloco-titulo {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
+
+/* Alinhamento */
+.admin-header, .header-esquerda, .admin-logo, .admin-sidebar nav ul li a,
+.resumo-card, .bloco-topo, .bloco-titulo, .grafico-placeholder, .acoes, .btn-primario {
+  display: flex;
+  align-items: center;
+}
+
