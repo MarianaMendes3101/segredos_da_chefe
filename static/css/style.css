@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sulphur+Point:wght@300;400;700&display=swap');
+
+:root {
+  --cor-primaria: #720707;
+  --cor-secundaria: #da9b76;
+  --cor-apoio: #fcf5df;
+  --cor-texto: #720707;
+  --branco: #fff;
+  --vermelhado: #924444;
+  --sombra: 0 18px 35px rgba(75, 7, 7, 0.18);
+  --transicao: 0.25s ease;
+}
