@@ -27,7 +27,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
 }
 
-/* ── HEADER ── */
+/*HEADER */
 .admin-header {
   background: var(--cor-primaria);
   color: var(--cor-apoio);
@@ -39,5 +39,24 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   z-index: 100;
   box-shadow: var(--sombra);
+}
+
+.header-esquerda { gap: 16px; }
+.admin-logo { gap: 10px;color: var(--cor-apoio); }
+.btn-toggle { background: none; border: 0; color: var(--cor-apoio); font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.admin-logo img { width: 42px; }
+.admin-logo .logo-texto { font-size: 1.2rem; line-height: 1; color: var(--cor-apoio); }
+.admin-logo .logo-texto span { color: var(--cor-secundaria); font-style: italic; display: block; }
+.admin-usuario { font-size: 0.95rem; color: var(--cor-secundaria); font-weight: 700; }
+
+/* sidebar */
+.admin-wrapper { display: flex; margin-top: 64px; min-height: calc(100vh - 104px); }
+
+.admin-sidebar {
+  width: 230px;
+  background: var(--cor-primaria);
+  flex-shrink: 0;
+  transition: width var(--transicao);
+  overflow: hidden;
 }
 
