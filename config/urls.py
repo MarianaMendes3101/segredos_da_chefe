@@ -1,4 +1,8 @@
+from django.contrib import admin
+from django.urls import path, include
 """
+
+
 URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,4 +23,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('web.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('core.urls')),
 ]
