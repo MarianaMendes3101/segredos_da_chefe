@@ -1,34 +1,172 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Os Segredos da Chef | Home</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Site de receitas com sabor de magia.">
+   <meta name="author" content="Mariana N. Mendes">
+   <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+   <title>Os Segredos da Chef | Home</title>
+   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
     <header>
+        <!-- Logo do site: leva o usuario de volta para a pagina inicial. -->
         <a class="logo" href="index.html">
-            <div class="logo-texto">Segredos da <span>Chef</span></div>
+            <img src="img/logo/portal secreto.png" alt="Logo, de um portal magico">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span> <!-- A tag <span> é um elemento genérico e em linha usado para agrupar partes de um texto ou documentos. -->
+            </div>
         </a>
 
-        <nav class="menu-principal" aria-label="Menu-principal">
-            <a href= "index.html">Home</a>
-             <a href="receita.html">Receitas</a>
+
+        <!-- Menu principal: links para as partes e paginas do site. -->
+        <nav class="menu-principal" aria-label="Menu principal">
+            <a href="index.html">Home</a>
+            <a href="receita.html">Receitas</a>
             <a href="login.html">Login</a>
             <a href="contato.html">Contato</a>
-
         </nav>
     </header>
-<main>
+
+
+    <!-- Conteudo principal da pagina inicial. -->
+    <main>
+        <!-- Banner: primeira area visual da home com imagem, titulo e busca. -->
         <section class="banner">
-            <div class="banner-texto"> <h1>Receitas feitas com amor</h1> <p>O prazer de cozinhar e os segredos
-                da culinária caseira revelados para você.</p>
-            <form class="busca" action="#" method="get">
-                <input type="search" name="s" placeholder="Procurar receita">
-            </form>
+            <!-- Texto do banner alinhado sobre a imagem de fundo. -->
+            <div class="banner-texto">
+                <h1>Receitas com Amor</h1>
+                <p>O prazer de cozinhar e os segredos da culinária caseira revelados para você.</p>
+
+
+                <!-- Formulario de busca visual para procurar receitas. -->
+                <form class="busca" action="#" method="get">
+                    <input type="search" name="s" placeholder="Procurar receita">
+                </form>
             </div>
         </section>
-</main>
 
+
+        <!-- Categorias: atalhos para tipos de receitas. -->
+        <nav class="categorias" aria-label="Categorias de receitas">
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">01</span>
+                <strong>Café da manhã</strong> <!-- A tag <strong> é um negrito usada para indicar que o texto envolvido possui alta importância para o código. -->
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">02</span>
+                <strong>Almoço ou jantar</strong>
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">03</span>
+                <strong>Lanches</strong>
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">04</span>
+                <strong>Sobremesas</strong>
+            </a>
+        </nav>
+
+
+        <!-- Secao de receitas: mostra os cards com as receitas em destaque. -->
+        <section class="receitas-container" id="receitas">
+           
+            <div class="titulo-faixa">
+                <h2>Receitas Destaque</h2>
+            </div>
+
+
+            <!-- Grade: organiza os cards lado a lado. -->
+            <div class="grade">
+                <!-- Article: representa um conteudo independente, neste caso uma receita. -->
+                <article class="card">
+                    <!-- Imagem da receita colocada pelo CSS inline no background. -->
+                    <div class="card-img" style="background-image: url('img/perfil/img2.jpg');"></div>
+                    <!-- Informacoes da receita. -->
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Mousse de Limão</h3>
+                            <span>25 min</span>
+                        </div>
+                        <p>Uma sobremesa cremosa, fresca e simples para adoçar o dia.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img3.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Rocambole de Prestígio</h3>
+                            <span>30 min</span>
+                        </div>
+                        <p>Chocolate e ninho em uma receita macia, bonita e cheia de sabor.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img4.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Hambúrguer Artesanal</h3>
+                            <span>35 min</span>
+                        </div>
+                        <p>Um lanche caprichado com cara de fim de semana em família.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Rodape: area final com nome do site e links importantes. -->
+    <footer>
+        <!-- Nome do site no rodape. -->
+        <div class="footer-logo">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
+            </div>
+        </div>
+
+
+        <!-- Links de categorias de receitas. -->
+        <div class="footer-coluna">
+            <h3>Categorias de receitas</h3>
+            <a href="receita.html">Cozinha afetiva</a>
+            <a href="receita.html">Doces prazeres</a>
+            <a href="receita.html">Lanches nutritivos</a>
+        </div>
+
+
+        <!-- Links de ocasioes de consumo. -->
+        <div class="footer-coluna">
+            <h3>Ocasiões de consumo</h3>
+            <a href="receita.html">Café da manhã</a>
+            <a href="receita.html">Almoço ou jantar</a>
+            <a href="receita.html">Sobremesa</a>
+        </div>
+
+
+        <!-- Links institucionais do site. -->
+        <div class="footer-coluna">
+            <h3>Institucional</h3>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+            <a href="receita.html">Todas as receitas</a>
+        </div>
+    </footer>
 </body>
 </html>
