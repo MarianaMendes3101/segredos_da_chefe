@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel administrativo - Segredos da Chef">
+    <link rel="shortcut icon"
+          href="{% static 'img/logo/logo site.png' %}"
+          type="image/x-icon">
+    <title>Os Segredos da Chef | Admin</title>
+    <link rel="stylesheet"
+          href="{% static 'css/template_base.css' %}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="admin-header">
+        <div class="header-esquerda">
+            <button class="btn-toggle" id="toggleSidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a href="{% url 'web:index' %}" class="admin-logo">
+                <img src="{% static 'img/logo/portal secreto.png' %}"
+                     alt="Logo Segredos da Chef">
+                <div class="logo-texto">
+                    Segredos da <span>Chef</span>
+                </div>
+            </a>
+        </div>
+        <div class="header-direita">
+            <span class="admin-usuario">
+                <i class="bi bi-person-circle"></i>
+                Administrador </span>
+        </div>
+    </header>
+    <div class="admin-wrapper">
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar" id="sidebar">
+            <nav>
+                <ul>
+                    <li class="ativo">
+                        <a href="#dashboard">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#receitas">
+                            <i class="bi bi-journal-richtext"></i>
+                            <span>Receitas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#categorias">
+                            <i class="bi bi-tags"></i>
+                            <span>Categorias</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#usuarios">
+                            <i class="bi bi-people"></i>
+                            <span>Usuários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#comentarios">
+                            <i class="bi bi-chat-left-text"></i>
+                            <span>Comentários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#relatorios">
+                            <i class="bi bi-bar-chart"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'web:index' %}">
+                            <i class="bi bi-house"></i>
+                            <span>Ver Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="admin-conteudo">
+            <!-- DASHBOARD -->
+            <section id="dashboard">
+                <h2 class="pagina-titulo">
+                    Dashboard
+                </h2>
+                <!-- CARDS DE RESUMO -->
+                <div class="resumo-cards">
+                    <div class="resumo-card">
+                        <i class="bi bi-journal-richtext"></i>
+                        <div>
+                            <h3>128</h3>
+                            <p>Receitas</p>
+                        </div>
+                    </div>
+                    <div class="resumo-card">
+                        <i class="bi bi-people"></i>
+                        <div>
+                            <h3>54</h3>
+                            <p>Usuários</p>
+                        </div>
+                    </div>
+                    <div class="resumo-card">
+                        <i class="bi bi-tags"></i>
+                        <div>
+                            <h3>4</h3>
+                            <p>Categorias</p>
+                        </div>
+                    </div>
+                    <div class="resumo-card">
+                        <i class="bi bi-chat-left-text"></i>
+                        <div>
+                            <h3>37</h3>
+                            <p>Comentários</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- GRÁFICO -->
+                <div class="bloco" id="relatorios">
+                    <h3 class="bloco-titulo">
+                        <i class="bi bi-bar-chart"></i>
+                        Receitas por Categoria </h3>
+                    <div class="grafico-placeholder">
+                        <p>📊 Área reservada para gráficos futuros</p>
+                    </div>
+                </div>
+            </section>
+            <!-- TABELA DE RECEITAS -->
+            <section class="bloco" id="receitas">
+                <div class="bloco-topo">
+                    <h3 class="bloco-titulo">
+                        <i class="bi bi-journal-richtext"></i>
+                        Últimas Receitas </h3>
+                    <button class="btn-primario"
+                            onclick="document.getElementById('form-receita').scrollIntoView({behavior:'smooth'})">
+                        <i class="bi bi-plus-lg"></i>
+                        Nova Receita
+                    </button>
+                </div>
+                <div class="tabela-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Receita</th>
+                                <th>Categoria</th>
+                                <th>Tempo</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mousse de Limão</td>
+                                <td>Sobremesas</td>
+                                <td>25 min</td>
+                                <td>01/08/2026</td>
+                                <td class="acoes">
+                                    <button class="btn-editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn-excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Rocambole de Prestígio</td>
+                                <td>Sobremesas</td>
+                                <td>30 min</td>
+                                <td>30/07/2026</td>
+                                <td class="acoes">
+                                    <button class="btn-editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn-excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+
+                                <td>Hambúrguer Artesanal</td>
+                                <td>Lanches</td>
+                                <td>35 min</td>
+                                <td> 28/07/2026</td>
+                                <td class="acoes">
+                                    <button class="btn-editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn-excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <section class="bloco" id="form-receita">
+                <h3 class="bloco-titulo">
+                    <i class="bi bi-plus-circle"></i>
+                    Cadastrar Nova Receita
+                </h3>
+                <form class="form-admin" id="formReceita">
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="nome-receita">
+                                Nome da Receita
+                            </label>
+                            <input
+                                type="text"
+                                id="nome-receita"
+                                placeholder="Ex: Bolo de Cenoura">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="categoria">
+                                Categoria
+                            </label>
+                            <select id="categoria">
+                                <option value="">
+                                    Selecione...
+                                </option>
+                                <option>
+                                    Café da manhã
+                                </option>
+                                <option>
+                                    Almoço ou jantar
+                                </option>
+                                <option>
+                                    Lanches
+                                </option>
+                                <option>
+                                    Sobremesas
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="tempo">
+                                Tempo de preparo
+                            </label>
+                            <input
+                                type="text"
+                                id="tempo"
+                                placeholder="Ex: 30 min">
+                        </div>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="descricao">
+                            Descrição
+                        </label>
+                        <textarea
+                            id="descricao"
+                            placeholder="Descreva brevemente a receita..."
+                        ></textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="modo-preparo">
+                            Modo de Preparo
+                        </label>
+                        <textarea
+                            id="modo-preparo"
+                            rows="5"
+                            placeholder="Passo a passo do preparo..."
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn-primario">
+                        <i class="bi bi-check-lg"></i>
+                        Salvar Receita
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <!-- FOOTER -->
+    <footer class="admin-footer">
+        <p>
+            © 2026
+            <strong>
+                Segredos da Chef
+            </strong>
+            — Painel Administrativo |
+        </p>
+    </footer>
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'js/template_base.js' %}"></script>
+</body>
+</html>
