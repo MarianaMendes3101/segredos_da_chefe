@@ -9,11 +9,14 @@
     <link rel="shortcut icon"
           href="{% static 'img/logo/logo site.png' %}"
           type="image/x-icon">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/template_base.css' %}">
+    <!-- JavaScript -->
+    <script src="{% static 'js/painel_js.js' %}" defer></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <title>Os Segredos da Chef | Admin</title>
-    <link rel="stylesheet"
-          href="{% static 'css/template_base.css' %}">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -281,6 +284,25 @@
         </p>
     </footer>
     <!-- JAVASCRIPT -->
-    <script src="{% static 'js/template_base.js' %}"></script>
+    <script src="{% static 'js/template_base.js' %}">
+        function abrirModal(titulo, tempo, descricao, preparo) {
+       document.getElementById('modal-titulo').innerText = titulo;
+       document.getElementById('modal-tempo').innerText = '⏱ Tempo de preparo: ' + tempo + ' min';
+       document.getElementById('modal-descricao').innerText = descricao;
+       document.getElementById('modal-preparo').innerText = preparo;
+       document.getElementById('modal-receita').style.display = 'flex';
+   }
+   function fecharModal() {
+       document.getElementById('modal-receita').style.display = 'none';
+   }
+   window.onclick = function(event) {
+       var modal = document.getElementById('modal-receita');
+       if (event.target == modal) {
+           modal.style.display = 'none';
+       }
+   }
+</script>
+
+
 </body>
 </html>
