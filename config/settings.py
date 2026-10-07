@@ -129,3 +129,11 @@ LOGIN_REDIRECT_URL = '/'  # Para onde vai após o login bem-sucedido (ex: Home)
 LOGOUT_REDIRECT_URL = '/usuarios/login/'  # Para onde vai após sair da conta
 
 
+
+MAILERS = {
+    'default': {
+        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
+AUTH_USER_MODEL = 'usuarios.Usuario'
+
