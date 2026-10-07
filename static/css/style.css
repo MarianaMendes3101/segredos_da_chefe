@@ -60,3 +60,21 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
 }
 
+.admin-sidebar.fechado { width: 58px; }
+.admin-sidebar nav ul { list-style: none; padding-top: 12px; }
+
+.admin-sidebar nav ul li a {
+  gap: 14px;
+  padding: 14px 18px;
+  color: var(--cor-secundaria);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background var(--transicao), color var(--transicao);
+  white-space: nowrap;
+}
+
+.admin-sidebar nav ul li a i { font-size: 1.2rem; min-width: 22px; }
+.admin-sidebar nav ul li a:hover, .admin-sidebar nav ul li.ativo a { background: var(--vermelhado); color: var(--cor-apoio); }
+.admin-sidebar.fechado span { display: none; }
+
+.admin-conteudo { flex: 1; padding: 32px; overflow-x: hidden; }
