@@ -6,7 +6,7 @@
   --cor-apoio: #fcf5df;
   --cor-texto: #720707;
   --branco: #fff;
-  --vermelhado: #924444;
+  --avermelhado: #924444;
   --sombra: 0 18px 35px rgba(75, 7, 7, 0.18);
   --transicao: 0.25s ease;
 }
@@ -15,7 +15,7 @@
 body { background: #f5ece0; color: var(--cor-texto); font: 16px 'Sulphur Point', Arial, sans-serif; }
 a { text-decoration: none; color: inherit; }
 
-/* MOdelo letra */
+/* Modelo letra */
 .admin-logo .logo-texto, .pagina-titulo, .resumo-card h3, .bloco-titulo {
   font-family: 'DM Serif Display', Georgia, serif;
 }
