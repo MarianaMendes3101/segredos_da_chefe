@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Site de receitas com sabor de magia.">
+   <meta name="author" content="Mariana N. Mendes">
+   <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+   <title>Os Segredos da Chef | Receitas</title>
+   <link rel="stylesheet" href="css/receita.css">
+   </head>
+
+
+<body>
+    <header>
+
+        <a class="logo" href="index.html">
+            <img src="img/logo/portal secreto.png" alt="Logo, de um portal magico">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
+            </div>
+        </a>
+
+        <nav class="menu-principal" aria-label="Menu principal">
+            <a href="index.html">Home</a>
+            <a href="receita.html">Receitas</a>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+    <main class="pagina-receitas">
+        <form class="busca receita-busca" action="#" method="get">
+            <input type="search" name="s" placeholder="Procurar receita">
+        </form>
+
+
+
+
+        <nav class="categorias" aria-label="Categorias de receitas">
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">01</span>
+                <strong>Café da manhã</strong> <!-- A tag <strong> é um negrito usada para indicar que o texto envolvido possui alta importância para o código. -->
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">02</span>
+                <strong>Almoço ou jantar</strong>
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">03</span>
+                <strong>Lanches</strong>
+            </a>
+
+
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">04</span>
+                <strong>Sobremesas</strong>
+            </a>
+        </nav>
+
+
+        <!-- Secao de receitas: mostra os cards com as receitas em destaque. -->
+        <section class="receitas-container" id="receitas">
+
+            <div class="titulo-faixa">
+                <h2>Receitas Destaque</h2>
+            </div>
+
+
+            <!-- Carrossel: organiza os cards em uma faixa com rolagem lateral. -->
+            <div class="carrossel">
+                <!-- Article: representa um conteudo independente, neste caso uma receita. -->
+                <article class="card">
+                    <!-- Imagem da receita colocada pelo CSS inline no background. -->
+                    <div class="card-img" style="background-image: url('img/perfil/img2.jpg');"></div>
+                    <!-- Informacoes da receita. -->
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Mousse de Limão</h3>
+                            <span>25 min</span>
+                        </div>
+                        <p>Uma sobremesa cremosa, fresca e simples para adoçar o dia.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img3.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Rocambole de Prestígio</h3>
+                            <span>30 min</span>
+                        </div>
+                        <p>Chocolate e ninho em uma receita macia, bonita e cheia de sabor.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img4.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Hambúrguer Artesanal</h3>
+                            <span>35 min</span>
+                        </div>
+                        <p>Um lanche caprichado com cara de fim de semana em família.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img1.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Bolo Caseiro</h3>
+                            <span>45 min</span>
+                        </div>
+                        <p>Uma receita simples, fofinha e perfeita para acompanhar um café.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img2.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Creme Gelado</h3>
+                            <span>20 min</span>
+                        </div>
+                        <p>Uma opção leve e cremosa para servir depois do almoço.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('img/perfil/img3.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Doce de Chocolate</h3>
+                            <span>30 min</span>
+                        </div>
+                        <p>Chocolate intenso em uma sobremesa bonita, rápida e deliciosa.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+<footer>
+
+        <div class="footer-logo">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
+            </div>
+        </div>
+
+
+        <div class="footer-coluna">
+            <h3>Categorias de receitas</h3>
+            <a href="receita.html">Cozinha afetiva</a>
+            <a href="receita.html">Doces prazeres</a>
+            <a href="receita.html">Lanches nutritivos</a>
+        </div>
+
+
+        <div class="footer-coluna">
+            <h3>Ocasiões de consumo</h3>
+            <a href="receita.html">Café da manhã</a>
+            <a href="receita.html">Almoço ou jantar</a>
+            <a href="receita.html">Sobremesa</a>
+        </div>
+
+
+        <div class="footer-coluna">
+            <h3>Institucional</h3>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+            <a href="receita.html">Todas as receitas</a>
+        </div>
+    </footer>
+
+
+</body>
+</html>
