@@ -42,7 +42,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .header-esquerda { gap: 16px; }
-.admin-logo { gap: 10px;color: var(--cor-apoio); }
+.admin-logo { gap: 10px; color: var(--cor-apoio); }
 .btn-toggle { background: none; border: 0; color: var(--cor-apoio); font-size: 1.6rem; cursor: pointer; line-height: 1; }
 .admin-logo img { width: 42px; }
 .admin-logo .logo-texto { font-size: 1.2rem; line-height: 1; color: var(--cor-apoio); }
@@ -78,3 +78,45 @@ a { text-decoration: none; color: inherit; }
 .admin-sidebar.fechado span { display: none; }
 
 .admin-conteudo { flex: 1; padding: 32px; overflow-x: hidden; }
+
+.pagina-titulo {
+  font-size: 2rem;
+  color: var(--cor-primaria);
+  margin-bottom: 28px;
+  border-left: 5px solid var(--cor-secundaria);
+  padding-left: 14px;
+}
+
+/* blocos */
+.resumo-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 30px; }
+.resumo-card, .bloco { background: var(--cor-apoio); box-shadow: var(--sombra); }
+.resumo-card { border-radius: 16px; padding: 22px; gap: 16px; }
+.resumo-card i { font-size: 2.2rem; color: var(--cor-primaria); }
+.resumo-card h3 { font-size: 2rem; color: var(--cor-primaria); line-height: 1; }
+.resumo-card p { font-size: 0.85rem; color: var(--vermelhado); font-weight: 700; }
+
+.bloco { border-radius: 20px; padding: 28px; margin-bottom: 28px; }
+.bloco-topo { justify-content: space-between; margin-bottom: 20px; }
+.bloco-titulo { font-size: 1.3rem; color: var(--cor-primaria); margin-bottom: 20px; gap: 8px; }
+.bloco-topo .bloco-titulo { margin-bottom: 0; }
+
+/*tabelas */
+.grafico-placeholder {
+  background: #f5ece0;
+  border: 2px dashed var(--cor-secundaria);
+  border-radius: 12px;
+  height: 160px;
+  justify-content: center;
+  color: var(--vermelhado);
+  font-weight: 700;
+}
+.tabela-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+thead tr { background: var(--cor-primaria); color: var(--cor-apoio); }
+th, td { padding: 13px 16px; text-align: left; }
+tbody tr:nth-child(even) { background: #f5ece0; }
+tbody tr:hover { background: #f0dfc8; }
+
+.acoes { gap: 8px; }
+.btn-editar, .btn-excluir { border: 0; padding: 7px 11px; border-radius: 8px; cursor: pointer; font-size: 0.9rem;
+}
