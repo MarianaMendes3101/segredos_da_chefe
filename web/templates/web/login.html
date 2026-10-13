@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mariana N. Mendes">
+    <title>Os Segredos da Chef | Login</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html">
+            <img src="img/logo/portal secreto.png" alt="Logo, de um portal magico">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
+            </div>
+        </a>
+        <nav class="menu-principal" aria-label="Menu principal">
+            <a href="index.html">Home</a>
+            <a href="receita.html">Receitas</a>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="pagina-contato">
+
+
+            <div class="titulo-faixa">
+                <h1>Minha Conta</h1>
+            </div>
+
+
+            <div class="form-container">
+
+
+                <!-- Abas para alternar entre Login e Cadastro -->
+                <div class="abas">
+                    <button class="aba ativa" id="btn-login" onclick="mostrarAba('login')">Entrar</button>
+                    <button class="aba" id="btn-cadastro" onclick="mostrarAba('cadastro')">Criar conta</button>
+                </div>
+
+
+                <!-- FORMULÁRIO DE LOGIN -->
+                <form method="post" action="" class="linha" id="form-login">
+                    <div class="lc5">
+                        <label for="email-login">Email</label>
+                        <input type="email" name="email" id="email-login" placeholder="Digite seu email" required>
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="senha-login">Senha</label>
+                        <input type="password" name="senha" id="senha-login" placeholder="Digite sua senha" required>
+                    </div>
+
+
+                    <div class="lc10 acoes-login">
+                        <input type="submit" value="Entrar">
+                    </div>
+                </form>
+
+
+                <!-- FORMULÁRIO DE CADASTRO -->
+                <form method="post" action="" class="linha" id="form-cadastro" style="display:none;">
+                    <div class="lc5">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="email-cadastro">Email</label>
+                        <input type="email" name="email" id="email-cadastro" placeholder="Digite seu email" required>
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="sexo">Sexo</label>
+                        <select name="sexo" id="sexo">
+                            <option value="">Selecione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="nao-informar">Prefiro não informar</option>
+                        </select>
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="nascimento">Nascimento</label>
+                        <input type="date" name="nascimento" id="nascimento">
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="senha-cadastro">Senha</label>
+                        <input type="password" name="senha" id="senha-cadastro" placeholder="Crie uma senha" required>
+                    </div>
+
+
+                    <div class="lc5">
+                        <label for="confirmar-senha">Confirmar Senha</label>
+                        <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Repita a senha" required>
+                    </div>
+
+
+                    <div class="lc10 acoes-login">
+                        <input type="submit" value="Cadastrar">
+                    </div>
+                </form>
+
+
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-logo">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
+            </div>
+        </div>
+        <div class="footer-coluna">
+            <h3>Categorias de receitas</h3>
+            <a href="receita.html">Cozinha afetiva</a>
+            <a href="receita.html">Doces prazeres</a>
+            <a href="receita.html">Lanches nutritivos</a>
+        </div>
+        <div class="footer-coluna">
+            <h3>Ocasiões de consumo</h3>
+            <a href="receita.html">Café da manhã</a>
+            <a href="receita.html">Almoço ou jantar</a>
+            <a href="receita.html">Sobremesa</a>
+        </div>
+        <div class="footer-coluna">
+            <h3>Institucional</h3>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </footer>
+
+
+    <script>
+        function mostrarAba(aba) {
+            const formLogin = document.getElementById('form-login');
+            const formCadastro = document.getElementById('form-cadastro');
+            const btnLogin = document.getElementById('btn-login');
+            const btnCadastro = document.getElementById('btn-cadastro');
+
+
+            if (aba === 'login') {
+                formLogin.style.display = 'flex';
+                formCadastro.style.display = 'none';
+                btnLogin.classList.add('ativa');
+                btnCadastro.classList.remove('ativa');
+            } else {
+                formLogin.style.display = 'none';
+                formCadastro.style.display = 'flex';
+                btnCadastro.classList.add('ativa');
+                btnLogin.classList.remove('ativa');
+            }
+        }
+    </script>
+</body>
+</html>
