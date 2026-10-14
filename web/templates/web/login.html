@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mariana N. Mendes">
     <title>Os Segredos da Chef | Login</title>
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/form.css">
-    <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/logo/logo site.png' %}" type="image/x-icon">
 </head>
 <body>
     <header>
         <a class="logo" href="index.html">
-            <img src="img/logo/portal secreto.png" alt="Logo, de um portal magico">
+           <img src="{% static 'img/logo/portal secreto.png' %}" alt="Logo de um portal mágico">
             <div class="logo-texto">
                 Segredos da <span>Chef</span>
             </div>
         </a>
         <nav class="menu-principal" aria-label="Menu principal">
-            <a href="index.html">Home</a>
-            <a href="receita.html">Receitas</a>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
+            <a href="{% url 'index.html' %}">Home</a>
+            <a href="{% url 'receita.html' %}">Receitas</a>
+            <a href="{% url 'login.html' %}">Login</a>
+            <a href="{% url 'contato.html' %}">Contato</a>
         </nav>
     </header>
 
@@ -47,12 +48,11 @@
 
                 <!-- FORMULÁRIO DE LOGIN -->
                 <form method="post" action="" class="linha" id="form-login">
+                    {% csrf_token %}
                     <div class="lc5">
                         <label for="email-login">Email</label>
                         <input type="email" name="email" id="email-login" placeholder="Digite seu email" required>
                     </div>
-
-
                     <div class="lc5">
                         <label for="senha-login">Senha</label>
                         <input type="password" name="senha" id="senha-login" placeholder="Digite sua senha" required>
@@ -67,12 +67,11 @@
 
                 <!-- FORMULÁRIO DE CADASTRO -->
                 <form method="post" action="" class="linha" id="form-cadastro" style="display:none;">
+                        {% csrf_token %}
                     <div class="lc5">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
                     </div>
-
-
                     <div class="lc5">
                         <label for="email-cadastro">Email</label>
                         <input type="email" name="email" id="email-cadastro" placeholder="Digite seu email" required>
@@ -89,24 +88,20 @@
                         </select>
                     </div>
 
-
                     <div class="lc5">
                         <label for="nascimento">Nascimento</label>
                         <input type="date" name="nascimento" id="nascimento">
                     </div>
-
 
                     <div class="lc5">
                         <label for="senha-cadastro">Senha</label>
                         <input type="password" name="senha" id="senha-cadastro" placeholder="Crie uma senha" required>
                     </div>
 
-
                     <div class="lc5">
                         <label for="confirmar-senha">Confirmar Senha</label>
                         <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Repita a senha" required>
                     </div>
-
 
                     <div class="lc10 acoes-login">
                         <input type="submit" value="Cadastrar">
