@@ -74,7 +74,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .admin-sidebar nav ul li a i { font-size: 1.2rem; min-width: 22px; }
-.admin-sidebar nav ul li a:hover, .admin-sidebar nav ul li.ativo a { background: var(--vermelhado); color: var(--cor-apoio); }
+.admin-sidebar nav ul li a:hover, .admin-sidebar nav ul li.ativo a { background: var(--avermelhado); color: var(--cor-apoio); }
 .admin-sidebar.fechado span { display: none; }
 
 .admin-conteudo { flex: 1; padding: 32px; overflow-x: hidden; }
@@ -93,7 +93,7 @@ a { text-decoration: none; color: inherit; }
 .resumo-card { border-radius: 16px; padding: 22px; gap: 16px; }
 .resumo-card i { font-size: 2.2rem; color: var(--cor-primaria); }
 .resumo-card h3 { font-size: 2rem; color: var(--cor-primaria); line-height: 1; }
-.resumo-card p { font-size: 0.85rem; color: var(--vermelhado); font-weight: 700; }
+.resumo-card p { font-size: 0.85rem; color: var(--avermelhado); font-weight: 700; }
 
 .bloco { border-radius: 20px; padding: 28px; margin-bottom: 28px; }
 .bloco-topo { justify-content: space-between; margin-bottom: 20px; }
@@ -107,7 +107,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 12px;
   height: 160px;
   justify-content: center;
-  color: var(--vermelhado);
+  color: var(--avermelhado);
   font-weight: 700;
 }
 .tabela-wrapper { overflow-x: auto; }
