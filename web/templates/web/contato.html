@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="pt-br">
@@ -5,34 +6,36 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mariana N. Mendes">
     <title>Os Segredos da Chef | Contato</title>
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/form.css">
+    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/logo/logo site.png' %}" type="image/png">
 </head>
 <body>
 
+<header>
+    <a class="logo" href="{% url 'web:home' %}">
+        <img src="{% static 'img/logo/portal secreto.png' %}"
+             alt="Logo de um portal mágico">
 
-    <header>
-        <a class="logo" href="index.html">
-            <img src="img/logo/portal secreto.png" alt="Logo, de um portal magico">
-            <div class="logo-texto">
-                Segredos da <span>Chef</span>
-            </div>
-        </a>
+        <div class="logo-texto">
+            Segredos da <span>Chef</span>
+        </div>
+    </a>
 
-
-        <nav class="menu-principal" aria-label="Menu principal">
-            <a href="index.html">Home</a>
-            <a href="receita.html">Receitas</a>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
-        </nav>
-    </header>
-
-
+    <nav class="menu-principal" aria-label="Menu principal">
+        <a href="{% url 'web:home' %}">Home</a>
+        <a href="{% url 'receitas:lista' %}">Receitas</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'web:contato' %}">Contato</a>
+    </nav>
+</header>
     <!-- Conteudo principal da pagina de contato. -->
     <main>
         <!-- Secao do formulario para o usuario mandar uma mensagem. -->
@@ -45,7 +48,8 @@
 
             <!-- Caixa do formulario de contato. -->
             <div class="form-container">
-                <form method="post" action="" class="linha">
+                <form method="post" action="{% url 'web:contato' %}" class="linha">
+                    {% csrf_token %}
                     <!-- Campo para o primeiro nome. -->
                     <div class="lc5">
                         <label for="nome">Nome</label>
@@ -101,26 +105,14 @@
         <!-- Secao com links para redes sociais. -->
         <section id="contato" class="sessao destaque">
             <h2>Fique por dentro de tudo o que acontece na nossa cozinha.</h2>
-
-
             <!-- Links das redes sociais com icones. -->
             <div class="redes">
                 <a href="#" class="rede instagram">
-                    <i class="bi bi-instagram"></i>
-                    Instagram
-                </a>
-
-
+                    <i class="bi bi-instagram"></i>Instagram</a>
                 <a href="#" class="rede whatsapp">
-                    <i class="bi bi-whatsapp"></i>
-                    WhatsApp
-                </a>
-
-
+                    <i class="bi bi-whatsapp"></i>WhatsApp</a>
                 <a href="#" class="rede facebook">
-                    <i class="bi bi-facebook"></i>
-                    Facebook
-                </a>
+                    <i class="bi bi-facebook"></i>Facebook</a>
             </div>
         </section>
     </main>
