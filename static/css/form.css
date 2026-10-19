@@ -1,0 +1,141 @@
+
+form {
+    background: var(--cor-apoio);
+    border-radius: 32px;
+    box-shadow: var(--sombra);
+    margin: 0 auto;
+    max-width: 920px;
+    padding: 34px;
+    width: 100%;
+}
+
+label {
+    color: var(--cor-primaria);
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    background: var(--branco);
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    font-family: 'Sulphur Point', Arial, sans-serif;
+    font-size: 1rem;
+    margin: 0 0 18px;
+    min-height: 48px;
+    outline: none;
+    padding: 10px 16px;
+}
+input, select {
+    border-radius: 999px;
+}
+
+textarea {
+    border-radius: 24px;
+    min-height: 150px;
+    resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--cor-primaria);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 0 4px rgba(218, 155, 118, 0.22);
+}
+
+input:not([type="submit"]), select, textarea {
+    width: 100%;
+}
+
+
+input[type="submit"] {
+    background: var(--cor-primaria);
+    color: var(--cor-apoio);
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    min-width: 180px;
+    transition: background var(--transicao), transform var(--transicao);
+}
+
+input[type="submit"]:hover {
+    background: #5f0505;
+    transform: translateY(-2px);
+}
+
+.linha {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lc1 { width: 6%; }
+.lc2 { width: 16%; }
+.lc3 { width: 26%; }
+.lc4 { width: 36%; }
+.lc5 { width: 46%; }
+.lc6 { width: 56%; }
+.lc7 { width: 66%; }
+.lc8 { width: 76%; }
+.lc9 { width: 86%; }
+.lc10 { width: 96%; }
+
+[class^="lc"] {
+    margin: 3px 2%;
+}
+
+.acoes-login {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 620px) {
+    form {
+        border-radius: 26px;
+        padding: 24px;
+    }
+
+    [class^="lc"] {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .acoes-login input[type="submit"] {
+        width: 100%;
+    }
+}
+
+.abas {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.aba {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--cor-primaria);
+    background: transparent;
+    color: var(--cor-primaria);
+    font-family: 'Sulphur Point', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.aba.ativa {
+    background: var(--cor-primaria);
+    color: var(--cor-apoio);
+}
+
+.aba:hover:not(.ativa) {
+    background: rgba(114, 7, 7, 0.08);
+}

@@ -1,0 +1,82 @@
+
+@import url('layout.css');
+
+body {
+    min-height: 100vh;
+}
+.pagina-receitas {
+    padding-top: 54px;
+}
+.receita-busca {
+    margin: 0 auto 44px;
+    max-width: 680px;
+    padding: 0 8%;
+}
+.pagina-receitas .categorias {
+    margin: 0 auto 58px;
+}
+.carrossel {
+    display: flex;
+    gap: 32px;
+    margin: 0 auto;
+    max-width: 1180px;
+    overflow-x: auto;
+    padding: 8px 6px 24px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.carrossel::-webkit-scrollbar {
+    height: 10px;
+}
+
+.carrossel::-webkit-scrollbar-track {
+    background: rgba(252, 245, 223, 0.35);
+    border-radius: 999px;
+}
+
+.carrossel::-webkit-scrollbar-thumb {
+    background: var(--cor-secundaria);
+    border-radius: 999px;
+}
+
+.carrossel .card {
+    flex: 0 0 calc((100% - 64px) / 3);
+    min-width: 280px;
+    scroll-snap-align: start;
+}
+
+.carrossel .card-info {
+    min-height: 188px;
+}
+
+@media (max-width: 900px) {
+    .pagina-receitas {
+        padding-top: 42px;
+    }
+
+    .receita-busca {
+        padding: 0 6%;
+    }
+
+    .carrossel .card {
+        flex-basis: calc((100% - 32px) / 2);
+    }
+}
+
+@media (max-width: 620px) {
+    .receita-busca {
+        margin-bottom: 36px;
+    }
+    .pagina-receitas .categorias {
+        margin-bottom: 46px;
+    }
+    .carrossel {
+        gap: 22px;
+        padding-bottom: 20px;
+    }
+    .carrossel .card {
+        flex-basis: 86%;
+        min-width: 240px;
+    }
+}
