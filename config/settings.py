@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'usuarios',
+# Seus apps:
+   'usuarios',
+   'receitas',
+   'contato',
     'web',
     'core',
-    'contato',
-    'receitas',
 ]
 
 MIDDLEWARE = [
@@ -108,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Porto_velho'
 
 USE_I18N = True
 
