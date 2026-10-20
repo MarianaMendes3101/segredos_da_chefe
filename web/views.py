@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render
 
@@ -14,3 +12,4 @@ def login(request):
     return render(request, 'web/login.html')
 def receita(request):
     return render(request, 'web/receita.html')
+
