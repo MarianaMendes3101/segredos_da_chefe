@@ -3,8 +3,6 @@ from django.contrib import messages
 from .models import Contato
 
 
-
-
 def contato_view(request):
    if request.method == 'POST':
        nome = request.POST.get('nome')
