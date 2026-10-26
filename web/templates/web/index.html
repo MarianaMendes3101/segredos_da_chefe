@@ -4,44 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Os Segredos da Chef | Home</title>
-    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
 </head>
 <body>
     <header>
         <a class="logo" href="index.html">
             <div class="logo-texto">Segredos da <span>Chef</span></div>
         </a>
-       <nav class="menu-principal" aria-label="Menu principal">
-        <a href="{% url 'web:index' %}">Home</a>
 
-        <a href="{% url 'web:login' %}">Login</a>
-        <a href="{% url 'web:contato' %}">Contato</a>
-    </nav>
+        <nav class="menu-principal" aria-label="Menu-principal">
+            <a href= "index.html">Home</a>
+             <a href="receita.html">Receitas</a>
+            <a href="login.html">Login</a>
+            <a href="contato.html">Contato</a>
+
+        </nav>
     </header>
 <main>
         <section class="banner">
-            <div class="banner-texto"> <h1>Receitas feitas com amor</h1>
-                <p>O prazer de cozinhar e os segredos
+            <div class="banner-texto"> <h1>Receitas feitas com amor</h1> <p>O prazer de cozinhar e os segredos
                 da culinária caseira revelados para você.</p>
             <form class="busca" action="#" method="get">
                 <input type="search" name="s" placeholder="Procurar receita">
             </form>
             </div>
         </section>
-  <nav class="categorias" aria-label="Receitas por categoria">
-   <!-- <a href=" url 'receitas:lista' "  class="cat-item"> -->
-        <span class="cat-icone">01</span>
-        <strong>Café da Manhã</strong>
-    </a>
-    <!-- <a href="url 'receitas:lista' " class="cat-item"> -->
-        <span class="cat-icone">03</span>
-        <strong>Lanches</strong>
-    </a>
-    <!-- <a href=" url 'receitas:lista' " class="cat-item"> -->
-        <span class="cat-icone">04</span>
-        <strong>Sobremesas</strong>
-    </a>
-</nav>
+    <nav class="categorias" aria-label="Receitas por categoria">
+         <a href="receitas.html" class="cat-item">
+                <span class="cat-icone">01</span>
+                <strong>Café da Manhã</strong>
+             </a>
+        <a href="receita.html" class="cat-item">
+                <span class="cat-icone">03</span>
+                <strong>Lanches</strong>
+            </a>
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">04</span>
+                <strong>Sobremesas</strong>
+            </a>
+    </nav>
   <!-- Secao de receitas: mostra os cards com as receitas em destaque. -->
         <section class="receitas-container" id="receitas">
 
@@ -63,7 +63,7 @@
                             <span>25 min</span>
                         </div>
                         <p>Uma sobremesa cremosa, fresca e simples para adoçar o dia.</p>
-                       <!-- <a href=" url 'receitas:detalhe'" class="btn-ver">Ver preparo</a> -->
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
                     </div>
                 </article>
 
@@ -76,7 +76,7 @@
                             <span>30 min</span>
                         </div>
                         <p>Chocolate e ninho em uma receita macia, bonita e cheia de sabor.</p>
-                <!--        <a href=" url 'receitas:detalhe' "" class="btn-ver">Ver preparo</a> -->
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
                     </div>
                 </article>
 
@@ -89,7 +89,7 @@
                             <span>35 min</span>
                         </div>
                         <p>Um lanche caprichado com cara de fim de semana em família.</p>
-                       <!-- <a href=" url 'receitas:detalhe' " class="btn-ver">Ver preparo</a> -->
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
                     </div>
                 </article>
             </div>
@@ -136,4 +136,5 @@
     </footer>
 </body>
 </html>
+
 
