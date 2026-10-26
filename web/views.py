@@ -12,4 +12,3 @@ def login(request):
     return render(request, 'web/login.html')
 def receita(request):
     return render(request, 'web/receita.html')
-
