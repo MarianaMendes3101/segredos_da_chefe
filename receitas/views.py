@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from models import Receita
+from .models import Receita
 
 
 def index(request):
@@ -7,7 +7,7 @@ def index(request):
    context = {
        'destaques': destaques
    }
-   return render(request, 'receitas/index.html', context)
+   return render(request, 'web/index.html', context)
 
 
 def home_view(request):
