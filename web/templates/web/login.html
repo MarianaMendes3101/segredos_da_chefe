@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mariana N. Mendes">
     <title>Os Segredos da Chef | Login</title>
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
@@ -12,17 +11,17 @@
 </head>
 <body>
     <header>
-        <a class="logo" href="index.html">
+        <a class="logo" href="{% url 'web:index' %}">
            <img src="{% static 'img/logo/portal secreto.png' %}" alt="Logo de um portal mágico">
             <div class="logo-texto">
                 Segredos da <span>Chef</span>
             </div>
         </a>
         <nav class="menu-principal" aria-label="Menu principal">
-            <a href="{% url 'index.html' %}">Home</a>
-            <a href="{% url 'receita.html' %}">Receitas</a>
-            <a href="{% url 'login.html' %}">Login</a>
-            <a href="{% url 'contato.html' %}">Contato</a>
+            <a href="{% url 'web:index' %}">Home</a>
+            <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
         </nav>
     </header>
 
@@ -134,8 +133,8 @@
         </div>
         <div class="footer-coluna">
             <h3>Institucional</h3>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
         </div>
     </footer>
 

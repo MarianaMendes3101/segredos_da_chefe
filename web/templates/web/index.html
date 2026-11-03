@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <a class="logo" href="index.html">
+        <a class="logo" href="{% url 'web:index' %}">
             <div class="logo-texto">Segredos da <span>Chef</span></div>
         </a>
 
@@ -133,9 +133,9 @@
         <!-- Links institucionais do site. -->
         <div class="footer-coluna">
             <h3>Institucional</h3>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
-            <a href="receita.html">Todas as receitas</a>
+             <a href="{% url 'receitas:receitas_lista' %}">Todas as Receitas</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
         </div>
     </footer>
 </body>
