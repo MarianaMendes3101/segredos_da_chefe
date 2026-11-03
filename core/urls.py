@@ -1,12 +1,9 @@
-from django.urls import path
-from . import views
 
-
-app_name = 'receitas'
-
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-   path('', views.index, name='index'),
-   path('receitas/', views.receitas_view, name='receitas_lista'),
-   path('receita/<int:id>/', views.receita, name='receita'),
+   path('admin/', admin.site.urls),
+   path('', include('web.urls')),
+   path('usuarios/', include('usuarios.urls')),
 ]

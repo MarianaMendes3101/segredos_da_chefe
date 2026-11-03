@@ -20,7 +20,7 @@
 <body>
 
 <header>
-    <a class="logo" href="{% url 'web:home' %}">
+    <a class="logo" href="{% url 'web:index' %}">
         <img src="{% static 'img/logo/portal secreto.png' %}"
              alt="Logo de um portal mágico">
 
@@ -30,9 +30,9 @@
     </a>
 
     <nav class="menu-principal" aria-label="Menu principal">
-        <a href="{% url 'web:home' %}">Home</a>
-        <a href="{% url 'receitas:lista' %}">Receitas</a>
-        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'web:index' %}">Home</a>
+        <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+        <a href="{% url 'web:login' %}">Login</a>
         <a href="{% url 'web:contato' %}">Contato</a>
     </nav>
 </header>
@@ -148,9 +148,9 @@
         <!-- Links institucionais do site. -->
         <div class="footer-coluna">
             <h3>Institucional</h3>
-            <a href="index.html">Home</a>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
+             <a href="{% url 'web:index' %}">Home</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
         </div>
     </footer>
 </body>
