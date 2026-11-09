@@ -1,5 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sulphur+Point:wght@300;400;700&display=swap');
 
+
+
+/* Configura o cabeçalho principal */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 6%;
+    width: 100%;
+    background: var(--cor-apoio);
+}
+
+/* Estiliza o nome do site */
+header .logo {
+    text-decoration: none;
+}
+
+/* Destaca o título Segredos da Chef */
+header .logo-texto {
+    color: var(--cor-primaria);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Organiza os links de navegação */
+.menu-principal {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Estiliza os links */
+.menu-principal a {
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.menu-principal a:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Ajustes para celulares */
+@media (max-width: 620px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .menu-principal {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    header .logo-texto {
+        font-size: 1.7rem;
+    }
+}
+
+
+
+
+
 :root {
   --cor-primaria: #720707;
   --cor-secundaria: #da9b76;
@@ -27,7 +96,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
 }
 
-/*HEADER */
+/*HEADER*/
 .admin-header {
   background: var(--cor-primaria);
   color: var(--cor-apoio);
@@ -120,3 +189,5 @@ tbody tr:hover { background: #f0dfc8; }
 .acoes { gap: 8px; }
 .btn-editar, .btn-excluir { border: 0; padding: 7px 11px; border-radius: 8px; cursor: pointer; font-size: 0.9rem;
 }
+
+
