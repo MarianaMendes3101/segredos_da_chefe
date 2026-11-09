@@ -1,183 +1,141 @@
+
 form {
-   background: var(--cor-apoio);
-   /* Arredonda as bordas da caixa do formulario. */
-   border-radius: 32px;
-   /* Cria sombra para destacar o formulario do fundo. */
-   box-shadow: var(--sombra);
-   /* Centraliza o formulario na pagina. */
-   margin: 0 auto;
-   /* Define a largura maxima para o formulario nao ficar grande demais. */
-   max-width: 920px;
-   /* Cria espaco interno entre a borda e os campos. */
-   padding: 34px;
-   /* Faz o formulario ocupar toda a largura possivel ate o max-width. */
-   width: 100%;
+    background: var(--cor-apoio);
+    border-radius: 32px;
+    box-shadow: var(--sombra);
+    margin: 0 auto;
+    max-width: 920px;
+    padding: 34px;
+    width: 100%;
 }
 
-
-/* Estilo dos textos que ficam acima dos campos. */
 label {
-   color: var(--cor-primaria);
-   display: block;
-   font-weight: 700;
-   margin-bottom: 8px;
+    color: var(--cor-primaria);
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
+input, select, textarea {
+    background: var(--branco);
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    font-family: 'Sulphur Point', Arial, sans-serif;
+    font-size: 1rem;
+    margin: 0 0 18px;
+    min-height: 48px;
+    outline: none;
+    padding: 10px 16px;
+}
+input, select {
+    border-radius: 999px;
+}
 
-/* Estilo compartilhado entre campo de texto, caixa de selecao e area de mensagem. */
-input,
-select,
 textarea {
-   background: var(--branco);
-   /* Coloca borda vermelha nos campos. */
-   border: 2px solid var(--cor-primaria);
-   color: var(--cor-primaria);
-   font-family: 'Sulphur Point', Arial, sans-serif;
-   /* Define o tamanho do texto dentro dos campos. */
-   font-size: 1rem;
-   /* Cria espaco abaixo de cada campo. */
-   margin: 0 0 18px;
-   /* Garante uma altura minima para os campos. */
-   min-height: 48px;
-   /* Remove a linha padrao do navegador ao clicar no campo. */
-   outline: none;
-   /* Cria espaco interno dentro dos campos. */
-   padding: 10px 16px;
+    border-radius: 24px;
+    min-height: 150px;
+    resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--cor-primaria);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 0 4px rgba(218, 155, 118, 0.22);
+}
+
+input:not([type="submit"]), select, textarea {
+    width: 100%;
 }
 
 
-/* Arredonda bastante os inputs e selects, deixando formato de pilula. */
-input,
-select {
-   border-radius: 999px;
-}
-
-
-/* Estilo especifico da area de mensagem. */
-textarea {
-   border-radius: 24px;
-   min-height: 150px;
-   /* Permite aumentar a area de mensagem apenas na vertical. */
-   resize: vertical;
-}
-
-
-/* Cor do texto de exemplo que aparece dentro dos campos vazios. */
-input::placeholder,
-textarea::placeholder {
-   color: var(--cor-primaria);
-}
-
-
-/* Destaque visual quando o usuario clica em um campo. */
-input:focus,
-select:focus,
-textarea:focus {
-   border-color: var(--cor-secundaria);
-   /* Cria uma sombra clara ao redor do campo selecionado. */
-   box-shadow: 0 0 0 4px rgba(218, 155, 118, 0.22);
-}
-
-
-/* Faz os campos ocuparem toda a largura da coluna onde estao. */
-input:not([type="submit"]),
-select,
-textarea {
-   width: 100%;
-}
-
-
-/* Estilo dos botoes de enviar, cadastrar e entrar. */
 input[type="submit"] {
-   /* Define o fundo do botao. */
-   background: var(--cor-primaria);
-   /* Define a cor do texto do botao. */
-   color: var(--cor-apoio);
-   /* Mostra a maozinha quando passa o mouse no botao. */
-   cursor: pointer;
-   /* Ajuda a alinhar o texto dentro do botao. */
-   display: inline-flex;
-   /* Deixa o texto do botao em negrito. */
-   font-weight: 700;
-   /* Centraliza o texto do botao. */
-   justify-content: center;
-   /* Define largura minima para o botao. */
-   min-width: 180px;
-   /* Deixa a mudanca de cor e movimento mais suave. */
-   transition: background var(--transicao), transform var(--transicao);
+    background: var(--cor-primaria);
+    color: var(--cor-apoio);
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    min-width: 180px;
+    transition: background var(--transicao), transform var(--transicao);
 }
 
-
-/* Efeito quando o mouse passa por cima do botao. */
 input[type="submit"]:hover {
-   /* Escurece o fundo do botao. */
-   background: #5f0505;
-   /* Sobe o botao um pouquinho. */
-   transform: translateY(-2px);
+    background: #5f0505;
+    transform: translateY(-2px);
 }
 
-
-/* Organiza os campos do formulario em linhas flexiveis. */
 .linha {
-   display: flex;
-   flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
+.lc1 { width: 6%; }
+.lc2 { width: 16%; }
+.lc3 { width: 26%; }
+.lc4 { width: 36%; }
+.lc5 { width: 46%; }
+.lc6 { width: 56%; }
+.lc7 { width: 66%; }
+.lc8 { width: 76%; }
+.lc9 { width: 86%; }
+.lc10 { width: 96%; }
 
-/* Classes de largura usadas para montar as colunas do formulario. */
-.lc1 { width: 6%; margin: 3px 2%; }
-.lc2 { width: 16%; margin: 3px 2%; }
-.lc3 { width: 26%; margin: 3px 2%; }
-.lc4 { width: 36%; margin: 3px 2%; }
-.lc5 { width: 46%; margin: 3px 2%; }
-.lc6 { width: 56%; margin: 3px 2%; }
-.lc7 { width: 66%; margin: 3px 2%; }
-.lc8 { width: 76%; margin: 3px 2%; }
-.lc9 { width: 86%; margin: 3px 2%; }
-.lc10 { width: 96%; margin: 3px 2%; }
+[class^="lc"] {
+    margin: 3px 2%;
+}
 
-
-/* Area dos botoes da pagina de login. */
 .acoes-login {
-   /* Deixa os botoes um ao lado do outro. */
-   display: flex;
-   /* Cria espaco entre os botoes caso a tela fique menor. */
-   gap: 14px;
-   /* Coloca um botao em cada lado do formulario. */
-   justify-content: space-between;
-   /* Permite quebrar linha caso a tela fique pequena. */
-   flex-wrap: wrap;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-
-/* Regra para telas pequenas, como celulares. */
 @media (max-width: 620px) {
-   /* Diminui o arredondamento e o espaco interno do formulario no celular. */
-   form {
-       border-radius: 26px;
-       padding: 24px;
-   }
+    form {
+        border-radius: 26px;
+        padding: 24px;
+    }
 
+    [class^="lc"] {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
 
-   /* Faz todas as colunas ocuparem a largura inteira no celular. */
-   .lc1,
-   .lc2,
-   .lc3,
-   .lc4,
-   .lc5,
-   .lc6,
-   .lc7,
-   .lc8,
-   .lc9,
-   .lc10 {
-       margin-left: 0;
-       margin-right: 0;
-       width: 100%;
-   }
+    .acoes-login input[type="submit"] {
+        width: 100%;
+    }
+}
 
+.abas {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+}
 
-   /* Faz os botoes do login ocuparem a largura inteira no celular. */
-   .acoes-login input[type="submit"] {
-       width: 100%;
-   }
+.aba {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--cor-primaria);
+    background: transparent;
+    color: var(--cor-primaria);
+    font-family: 'Sulphur Point', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.aba.ativa {
+    background: var(--cor-primaria);
+    color: var(--cor-apoio);
+}
+
+.aba:hover:not(.ativa) {
+    background: rgba(114, 7, 7, 0.08);
 }
