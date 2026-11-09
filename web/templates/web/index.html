@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Os Segredos da Chef | Home</title>
+     <!-- Conexão com os arquivos CSS -->
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/receita.css' %}">
 </head>
 <body>
     <header>
-        <a class="logo" href="index.html">
+        <a class="logo" href="{% url 'web:index' %}">
             <div class="logo-texto">Segredos da <span>Chef</span></div>
         </a>
 
         <nav class="menu-principal" aria-label="Menu-principal">
-            <a href= "index.html">Home</a>
-             <a href="receita.html">Receitas</a>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
+            <a href="{% url 'web:index' %}">Home</a>
+             <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
 
         </nav>
     </header>
@@ -29,7 +33,7 @@
             </div>
         </section>
     <nav class="categorias" aria-label="Receitas por categoria">
-         <a href="receitas.html" class="cat-item">
+         <a href="receita.html" class="cat-item">
                 <span class="cat-icone">01</span>
                 <strong>Café da Manhã</strong>
              </a>
@@ -129,9 +133,9 @@
         <!-- Links institucionais do site. -->
         <div class="footer-coluna">
             <h3>Institucional</h3>
-            <a href="login.html">Login</a>
-            <a href="contato.html">Contato</a>
-            <a href="receita.html">Todas as receitas</a>
+             <a href="{% url 'receitas:receitas_lista' %}">Todas as Receitas</a>
+            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'web:contato' %}">Contato</a>
         </div>
     </footer>
 </body>
