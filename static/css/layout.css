@@ -1,122 +1,753 @@
+
+/* Importa as fontes usadas no site pelo Google Fonts. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sulphur+Point:wght@300;400;700&display=swap');
 
+
+/* Variaveis usadas para manter a identidade visual entre as paginas. */
 :root {
-  --cor-primaria: #720707;
-  --cor-secundaria: #da9b76;
-  --cor-apoio: #fcf5df;
-  --cor-texto: #720707;
-  --branco: #fff;
-  --avermelhado: #924444;
-  --sombra: 0 18px 35px rgba(75, 7, 7, 0.18);
-  --transicao: 0.25s ease;
+   --cor-primaria: #720707;
+   --cor-secundaria: #da9b76;
+   --cor-apoio: #fcf5df;
+   --cor-texto: #720707;
+   --branco: #ffffff;
+   --vermelhado: #924444;
+   --sombra: 0 18px 35px rgba(75, 7, 7, 0.18);
+   --transicao: 0.25s ease;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #f5ece0; color: var(--cor-texto); font: 16px 'Sulphur Point', Arial, sans-serif; }
-a { text-decoration: none; color: inherit; }
 
-/* Modelo letra */
-.admin-logo .logo-texto, .pagina-titulo, .resumo-card h3, .bloco-titulo {
-  font-family: 'DM Serif Display', Georgia, serif;
+/* Configuracao geral: tira margens padrao e facilita calcular larguras. */
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
 }
 
-/* Alinhamento */
-.admin-header, .header-esquerda, .admin-logo, .admin-sidebar nav ul li a,
-.resumo-card, .bloco-topo, .bloco-titulo, .grafico-placeholder, .acoes, .btn-primario {
-  display: flex;
-  align-items: center;
+
+/* Faz a rolagem ate as secoes acontecer de forma suave. */
+html {
+   scroll-behavior: smooth;
 }
 
-/*HEADER */
-.admin-header {
-  background: var(--cor-primaria);
-  color: var(--cor-apoio);
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 64px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  box-shadow: var(--sombra);
+
+/* Estilo base do corpo do site. */
+body {
+   background: var(--vermelhado);
+   color: var(--cor-texto);
+   font-family: 'Sulphur Point', Arial, sans-serif;
+   font-size: 16px;
 }
 
-.header-esquerda { gap: 16px; }
-.admin-logo { gap: 10px; color: var(--cor-apoio); }
-.btn-toggle { background: none; border: 0; color: var(--cor-apoio); font-size: 1.6rem; cursor: pointer; line-height: 1; }
-.admin-logo img { width: 42px; }
-.admin-logo .logo-texto { font-size: 1.2rem; line-height: 1; color: var(--cor-apoio); }
-.admin-logo .logo-texto span { color: var(--cor-secundaria); font-style: italic; display: block; }
-.admin-usuario { font-size: 0.95rem; color: var(--cor-secundaria); font-weight: 700; }
 
-/* sidebar */
-.admin-wrapper { display: flex; margin-top: 64px; min-height: calc(100vh - 104px); }
-
-.admin-sidebar {
-  width: 230px;
-  background: var(--cor-primaria);
-  flex-shrink: 0;
-  transition: width var(--transicao);
-  overflow: hidden;
+/* Estilo padrao dos links: remove sublinhado e herda a cor do elemento pai. Faz parte dos atalho do ródape */
+a {
+   color: inherit;
+   text-decoration: none;
 }
 
-.admin-sidebar.fechado { width: 58px; }
-.admin-sidebar nav ul { list-style: none; padding-top: 12px; }
 
-.admin-sidebar nav ul li a {
-  gap: 14px;
-  padding: 14px 18px;
-  color: var(--cor-secundaria);
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: background var(--transicao), color var(--transicao);
-  white-space: nowrap;
+/* Cabecalho do site: segura a logo e o menu principal. */
+header {
+   align-items: center;
+   background: var(--cor-primaria);
+   display: flex;
+   gap: 28px;
+   justify-content: space-between;
+   min-height: 96px;
+   padding: 22px 8%;
+   /* Deixa o menu grudado no topo quando o usuario rola a pagina. */
+   position: sticky;
+   top: 0;
+   z-index: 10;
 }
 
-.admin-sidebar nav ul li a i { font-size: 1.2rem; min-width: 22px; }
-.admin-sidebar nav ul li a:hover, .admin-sidebar nav ul li.ativo a { background: var(--avermelhado); color: var(--cor-apoio); }
-.admin-sidebar.fechado span { display: none; }
 
-.admin-conteudo { flex: 1; padding: 32px; overflow-x: hidden; }
-
-.pagina-titulo {
-  font-size: 2rem;
-  color: var(--cor-primaria);
-  margin-bottom: 28px;
-  border-left: 5px solid var(--cor-secundaria);
-  padding-left: 14px;
+/* Estilo compartilhado entre a logo do topo e a logo do rodape. */
+.logo,
+.footer-logo {
+   color: var(--vermelhado);
+   display: flex;         /* Deixa imagem e texto lado a lado */
+   align-items: center;   /* Alinha o meio da imagem com o meio do texto */ /* Cria espaço entre a imagem e o texto */
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 2rem;
+   line-height: 0.95;
+   max-width: 350px;
 }
 
-/* blocos */
-.resumo-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 30px; }
-.resumo-card, .bloco { background: var(--cor-apoio); box-shadow: var(--sombra); }
-.resumo-card { border-radius: 16px; padding: 22px; gap: 16px; }
-.resumo-card i { font-size: 2.2rem; color: var(--cor-primaria); }
-.resumo-card h3 { font-size: 2rem; color: var(--cor-primaria); line-height: 1; }
-.resumo-card p { font-size: 0.85rem; color: var(--avermelhado); font-weight: 700; }
 
-.bloco { border-radius: 20px; padding: 28px; margin-bottom: 28px; }
-.bloco-topo { justify-content: space-between; margin-bottom: 20px; }
-.bloco-titulo { font-size: 1.3rem; color: var(--cor-primaria); margin-bottom: 20px; gap: 8px; }
-.bloco-topo .bloco-titulo { margin-bottom: 0; }
-
-/*tabelas */
-.grafico-placeholder {
-  background: #f5ece0;
-  border: 2px dashed var(--cor-secundaria);
-  border-radius: 12px;
-  height: 160px;
-  justify-content: center;
-  color: var(--avermelhado);
-  font-weight: 700;
+/* Organiza o texto da logo em duas linhas. */
+.logo-texto {
+   display: flex;
+   flex-direction: column; /* Coloca "Segredos da" em cima de "Chef" */
 }
-.tabela-wrapper { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-thead tr { background: var(--cor-primaria); color: var(--cor-apoio); }
-th, td { padding: 13px 16px; text-align: left; }
-tbody tr:nth-child(even) { background: #f5ece0; }
-tbody tr:hover { background: #f0dfc8; }
 
-.acoes { gap: 8px; }
-.btn-editar, .btn-excluir { border: 0; padding: 7px 11px; border-radius: 8px; cursor: pointer; font-size: 0.9rem;
+
+/* Ajusta a imagem dentro do link do logo */
+.logo img {
+   width: 75px;
+   height: auto; /* Mantém a proporção da imagem sem achatar */
+
 }
+
+
+/* Ajusta a imagem do rodapé, pode ser menor que a de cima) */
+.footer-logo img {
+   width: 30px;
+   height: auto;
+   vertical-align: middle;
+   margin-right: 10px;
+}
+
+
+/* Destaca a palavra Chef na logo. */
+.logo span,
+.footer-logo span {
+   color: var(--cor-secundaria);
+   display: block;
+   font-style: italic;
+}
+
+
+/* Menu principal: organiza os links um ao lado do outro. */
+.menu-principal {
+   align-items: center;
+   display: flex;
+   gap: 42px;
+}
+
+
+/* Links do menu principal. */
+.menu-principal a {
+   color: var(--vermelhado);
+   font-size: 1.15rem;
+   font-weight: 700;
+   transition: color var(--transicao), transform var(--transicao);
+}
+
+
+/* Efeito visual quando o mouse passa nos links do menu. */
+.menu-principal a:hover {
+   color: var(--cor-secundaria);
+   transform: scale(1.08); /*scale é uma propriedade e função usada para aumentar ou diminuir o tamanho (largura e altura) de um elemento sem alterar o layout da página.*/
+}
+
+
+/* Ajuste essencial para o banner original reaparecer com a imagem inteira */
+.hero, .banner {
+   background-image: url('../img/banner/img1.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 550px; /* Força a altura correta do banner */
+   width: 100%;
+   position: relative;
+}
+
+
+.card {
+   position: relative;
+   background-color: #fef4e4;
+   border-radius: 20px;
+   overflow: hidden; /* Impede que a imagem ultrapasse as bordas arredondadas */
+   display: flex;
+   flex-direction: column;
+}
+
+
+.card-img {
+   width: 100%;
+   height: 180px; /* Ajuste a altura ideal para a imagem */
+   object-fit: cover; /* Faz a imagem se ajustar sem distorcer */
+}
+
+
+/* No CSS do seu card de receita */
+.card-receita {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 100%; /* Garante que todos tenham a mesma altura na linha */
+}
+
+
+/* E no botão ou na div que envolve o botão */
+.card-receita button {
+   margin-top: auto; /* Empurra o botão sempre para o rodapé do card */
+}
+
+
+/* Banner principal da Home com imagem de destaque e campo de busca. */
+.banner {
+   align-items: center;
+   background: /*linear-gradient: É a função que cria uma transição suave entre duas ou mais cores ao longo de uma linha reta.*/
+       linear-gradient(90deg, rgba(114, 7, 7, 0.05) 0%, rgba(114, 7, 7, 0.15) 48%, rgba(114, 7, 7, 0.72) 100%),
+       url('../img/banner/img1.jpg') center / cover no-repeat;
+   display: flex;
+   justify-content: flex-end;
+   min-height: 620px;
+   overflow: hidden; /*overflow: hidden no CSS define o que acontece quando o conteúdo de um elemento ultrapassa o tamanho (largura ou altura) da sua caixa. O valor hidden corta e oculta qualquer parte do conteúdo que "transborde" (fique fora) dos limites do elemento*/
+   padding: 80px 8% 125px;
+}
+
+
+/* Caixa do texto que fica dentro do banner. */
+.banner-texto {
+   margin-left: auto;
+   max-width: 560px;
+}
+
+
+/* Titulo grande do banner da pagina inicial. */
+.banner h1 {
+   color: var(--cor-apoio);
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 78px;
+   font-weight: 400;
+   line-height: 0.95;
+   margin-bottom: 16px;
+}
+
+
+/* Texto de apoio abaixo do titulo do banner. */
+.banner p {
+   color: var(--cor-secundaria);
+   font-size: 1.35rem;
+   font-weight: 700;
+   line-height: 1.3;
+   margin-bottom: 24px;
+}
+
+
+
+
+
+
+/* Formulario de busca do banner. */
+.busca {
+   position: relative;
+}
+
+
+/* Icone decorativo que aparece dentro do campo de busca. */
+.busca::before {
+   color: var(--cor-primaria);
+   content: "⌕";
+   font-size: 1.55rem;
+   left: 20px;
+   line-height: 1;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-52%);
+   z-index: 1;
+}
+
+
+/* Campo de busca da home. */
+.busca input {
+   background: var(--cor-secundaria);
+   border: 2px solid var(--cor-secundaria);
+   border-radius: 999px;
+   color: var(--cor-primaria);
+   font-size: 1rem;
+   height: 52px;
+   outline: none;
+   padding: 0 24px 0 58px;
+   width: 100%;
+}
+
+
+/* Cor do texto de exemplo dentro do campo de busca. */
+.busca input::placeholder {
+   color: rgba(114, 7, 7, 0.82);
+}
+
+
+/* Atalhos de categoria posicionados sobre o final do banner. */
+.categorias {
+   display: grid;
+   gap: 8px;
+   grid-template-columns: repeat(4, minmax(0, 1fr)); /*A propriedade grid-template-columns é usada para definir o número e a largura das colunas em um layout de grade. Aqui ela define um layout de 4 colunas iguais e responsivas, que se ajustam automaticamente ao tamanho da tela.
+   Ela é dividida em três partes:
+   repeat(4, ...): Cria a estrutura exatamente 4 vezes, evitando repetições manuais.
+   minmax(0, 1fr): Define o tamanho mínimo e máximo de cada coluna:
+   0: Tamanho mínimo (a coluna pode encolher até sumir caso o espaço acabe).
+   1fr: Tamanho máximo (a coluna ocupa uma fração igual do espaço disponível).*/
+   margin: -36px auto 58px;
+   max-width: 1180px;
+   padding: 0 24px;
+   position: relative;
+   z-index: 2; /*O z-index em CSS é a propriedade que controla a ordem de empilhamento de elementos que se sobrepõem em uma página web. Ele permite definir qual elemento deve ficar "na frente" ou "atrás" de outro, agindo como a profundidade*/
+}
+
+
+/* Cada item de categoria. */
+.cat-item {
+   align-items: center;
+   background: var(--cor-primaria);
+   border-radius: 999px;
+   box-shadow: var(--sombra);
+   color: var(--cor-secundaria);
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   justify-content: center;
+   min-height: 96px;
+   padding: 14px 22px;
+   text-align: center;
+   transition: background var(--transicao), color var(--transicao), transform var(--transicao);
+}
+
+
+/* Efeito ao passar o mouse sobre uma categoria. */
+.cat-item:hover {
+   background: #5f0505;
+   color: var(--cor-apoio);
+   transform: translateY(-6px);
+}
+
+
+/* Circulo que mostra o numero da categoria. */
+.cat-icone {
+   align-items: center;
+   border: 2px solid currentColor;
+   border-radius: 50%;
+   display: flex;
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 1.1rem;
+   height: 42px;
+   justify-content: center;
+   flex-shrink: 0;
+   width: 42px;
+}
+
+
+/* Texto principal da categoria. */
+.cat-item strong {
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 1.12rem;
+   line-height: 1.05;
+}
+
+
+/* Espaçamento das principais secoes internas. */
+.receitas-container,
+.pagina-contato,
+.mapa {
+   padding: 0 8% 72px;
+   /* Compensa o cabecalho fixo quando o usuario clica em links com #. */
+   scroll-margin-top: 150px;
+}
+
+
+/* Faixa decorativa usada nos titulos das secoes. */
+.titulo-faixa {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   margin: 0 auto 42px;
+   max-width: 1180px;
+   position: relative;
+}
+
+
+/* Linha arredondada atras dos titulos das secoes. */
+.titulo-faixa::before {
+   border: 2px solid var(--cor-secundaria);
+   border-left: 0;
+   border-radius: 0 999px 999px 0;
+   content: "";
+   height: 100%;
+   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
+}
+
+
+/* Texto dos titulos que ficam dentro da faixa. */
+.titulo-faixa h1,
+.titulo-faixa h2 {
+   background: var(--vermelhado);
+   color: var(--cor-secundaria);
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 46px;
+   font-weight: 700;
+   line-height: 1;
+   padding: 10px 26px;
+   position: relative;
+   text-align: center;
+   z-index: 1;
+}
+
+
+/* Grade responsiva para organizar os cards de receitas. */
+.grade {
+   display: grid;
+   gap: 32px;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+   margin: 0 auto;
+   max-width: 1180px;
+}
+
+
+/* Card individual de receita. */
+
+
+/* Efeito de subida do card ao passar o mouse. */
+.card:hover {
+   transform: translateY(-8px);
+}
+
+
+/* Caixa de informacoes abaixo da imagem do card. */
+.card-info {
+   background: var(--cor-apoio);
+   border-radius: 0 0 28px 28px;
+   margin: 0 18px;
+   min-height: 188px;
+   padding: 18px 20px 20px;
+   position: relative;
+}
+
+
+/* Parte superior do card: titulo da receita e tempo de preparo. */
+.card-topo {
+   align-items: flex-start;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 14px;
+   justify-content: space-between;
+   margin-bottom: 10px;
+}
+
+
+/* Nome da receita dentro do card. */
+.card h3 {
+   color: var(--cor-primaria);
+   flex: 1;
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 1.65rem;
+   line-height: 1.05;
+   min-width: 0;
+}
+
+
+/* Tempo de preparo da receita. */
+.card span {
+   background: rgba(114, 7, 7, 0.08);
+   border-radius: 999px;
+   color: var(--cor-primaria);
+   flex: 0 0 auto;
+   font-size: 0.95rem;
+   font-weight: 700;
+   padding: 4px 10px;
+   text-align: right;
+}
+
+
+/* Descricao curta da receita. */
+.card p {
+   color: var(--cor-primaria);
+   font-size: 1rem;
+   line-height: 1.25;
+}
+
+
+/* Link "Ver preparo" dentro do card. */
+.btn-ver {
+   color: var(--cor-primaria);
+   display: inline-block;
+   font-weight: 700;
+   margin-top: 14px;
+   text-decoration: underline;
+   text-underline-offset: 4px;
+}
+
+
+/* Rodape padronizado nas duas paginas do site. */
+footer {
+   background: var(--cor-apoio);
+   border-radius: 0 100px 0 0;
+   color: var(--cor-primaria);
+   display: grid;
+   gap: 34px;
+   grid-template-columns: 1.4fr repeat(3, 1fr);
+   padding: 70px 8% 56px;
+}
+
+
+/* Ajusta a cor da logo quando ela esta no rodape. */
+footer .footer-logo {
+   color: var(--cor-primaria);
+}
+
+
+/* Coluna de links do rodape. */
+.footer-coluna {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+
+/* Titulo de cada coluna do rodape. */
+.footer-coluna h3 {
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 1.1rem;
+   margin-bottom: 10px;
+}
+
+
+/* Links do rodape. */
+.footer-coluna a {
+   font-size: 0.95rem;
+}
+
+
+/* Efeito ao passar o mouse nos links do rodape. */
+.footer-coluna a:hover {
+   color: #9b3c22;
+}
+
+
+/* Espaco superior da pagina de login e contato. */
+.pagina-contato {
+   padding-top: 58px;
+}
+
+
+/* Caixa que segura o mapa na pagina de contato. */
+.mapa-frame {
+   border-radius: 32px;
+   box-shadow: var(--sombra);
+   margin: 0 auto;
+   max-width: 960px;
+   overflow: hidden;
+}
+
+
+/* Caixa destacada da parte de redes sociais. */
+.sessao.destaque {
+   background: var(--cor-apoio);
+   border-radius: 32px;
+   box-shadow: var(--sombra);
+   margin: 0 auto 72px;
+   max-width: 960px;
+   padding: 38px 32px;
+   /* Compensa o cabecalho fixo quando a secao for aberta por link. */
+   scroll-margin-top: 150px;
+   text-align: center;
+}
+
+
+/* Titulo da caixa de redes sociais. */
+.sessao.destaque h2 {
+   color: var(--cor-primaria);
+   font-family: 'DM Serif Display', Georgia, serif;
+   font-size: 28px;
+   line-height: 1;
+   margin-bottom: 14px;
+}
+
+
+/* Texto de apoio usado em secoes de destaque. */
+.subtitulo {
+   color: var(--cor-primaria);
+   font-size: 1.15rem;
+   font-weight: 700;
+   margin: 0 auto 26px;
+   max-width: 620px;
+}
+
+
+/* Organiza os links das redes sociais. */
+.redes {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 14px;
+   justify-content: center;
+}
+
+
+/* Botao de uma rede social. */
+.rede {
+   align-items: center;
+   border-radius: 999px;
+   color: var(--branco);
+   display: inline-flex;
+   font-weight: 700;
+   gap: 8px;
+   min-height: 48px;
+   padding: 12px 22px;
+   transition: transform var(--transicao), filter var(--transicao);
+}
+
+
+/* Efeito ao passar o mouse em uma rede social. */
+.rede:hover {
+   filter: brightness(0.92);
+   transform: translateY(-3px);
+}
+
+
+/* Cor do botao do Instagram. */
+.instagram {
+   background: #c13584;
+}
+
+
+/* Cor do botao do WhatsApp. */
+.whatsapp {
+   background: #25d366;
+}
+
+
+/* Cor do botao do Facebook. */
+.facebook {
+   background: #1877f2;
+}
+
+
+/* Regras para telas medias, como tablets ou navegador pela metade. */
+@media (max-width: 900px) {
+   /* Empilha logo e menu quando nao ha espaco suficiente. */
+   header {
+       align-items: flex-start;
+       flex-direction: column;
+       padding: 20px 6%;
+   }
+
+
+   /* Diminui o espaco entre links do menu em telas medias. */
+   .menu-principal {
+       gap: 22px;
+   }
+
+
+   /* Ajusta o tamanho e o espaco do banner em telas medias. */
+   .banner {
+       min-height: 560px;
+       padding: 64px 6% 115px;
+   }
+
+
+   /* Diminui o titulo do banner em telas medias. */
+   .banner h1 {
+       font-size: 60px;
+   }
+
+
+   /* Diminui os titulos das faixas em telas medias. */
+   .titulo-faixa h1,
+   .titulo-faixa h2 {
+       font-size: 40px;
+   }
+
+
+   .categorias,
+   .grade {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+   }
+
+
+   /* Coloca titulo e tempo do card em linhas separadas para o tempo nao sair do quadrado. */
+   .card-topo {
+       flex-direction: column;
+       gap: 8px;
+   }
+
+
+   /* Alinha o tempo de preparo para a esquerda quando o card fica mais estreito. */
+   .card span {
+       text-align: left;
+   }
+
+
+   /* Organiza o rodape em duas colunas em telas medias. */
+   footer {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+   }
+}
+
+
+/* Regras para telas pequenas, como celulares. */
+@media (max-width: 620px) {
+   /* Permite que os links do menu quebrem linha. */
+   .menu-principal {
+       flex-wrap: wrap;
+   }
+
+
+   /* Diminui o texto dos links do menu no celular. */
+   .menu-principal a {
+       font-size: 1rem;
+   }
+
+
+   /* Ajusta o banner para telas pequenas. */
+   .banner {
+       justify-content: flex-start;
+       min-height: 520px;
+   }
+
+
+   /* Diminui mais o titulo do banner no celular. */
+   .banner h1 {
+       font-size: 46px;
+   }
+
+
+   /* Diminui mais os titulos das faixas no celular. */
+   .titulo-faixa h1,
+   .titulo-faixa h2 {
+       font-size: 34px;
+   }
+
+
+   .banner-texto {
+       max-width: 100%;
+   }
+
+
+   /* Em celular, categorias, cards e rodape ficam em uma coluna. */
+   .categorias,
+   .grade,
+   footer {
+       grid-template-columns: 1fr;
+   }
+
+
+   /* Aumenta a altura das categorias no celular. */
+   .cat-item {
+       min-height: 128px;
+   }
+
+
+   /* Diminui as laterais das secoes no celular. */
+   .receitas-container,
+   .pagina-contato,
+   .mapa {
+       padding-left: 6%;
+       padding-right: 6%;
+   }
+
+
+   /* Fecha a borda da faixa decorativa no celular. */
+   .titulo-faixa::before {
+       border-left: 2px solid var(--cor-secundaria);
+       border-radius: 999px;
+   }
+
+
+   /* Diminui a margem interna da caixa de informacoes do card no celular. */
+   .card-info {
+       margin: 0 10px;
+   }
+
+
+   /* Arredonda menos o rodape no celular para caber melhor. */
+   footer {
+       border-radius: 0 70px 0 0;
+   }
+}
+
