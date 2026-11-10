@@ -19,7 +19,7 @@
         <nav class="menu-principal" aria-label="Menu principal">
              <a href="{% url 'web:index' %}">Home</a>
              <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
-            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'usuarios:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
         </nav>
 </header>
@@ -129,7 +129,7 @@
             Todas as Receitas
         </a>
 
-        <a href="{% url 'web:login' %}">
+        <a href="{% url 'usuarios:login' %}">
             Login
         </a>
 
