@@ -14,11 +14,12 @@
 <body>
 <header>
     <a class="logo" href="{% url 'web:index' %}">
-    </a>
+            <div class="logo-texto">Segredos da <span>Chef</span></div>
+        </a>
         <nav class="menu-principal" aria-label="Menu principal">
              <a href="{% url 'web:index' %}">Home</a>
              <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
-            <a href="{% url 'web:login' %}">Login</a>
+            <a href="{% url 'usuarios:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
         </nav>
 </header>
@@ -27,24 +28,6 @@
             <input type="search" name="s" placeholder="Procurar receita">
         </form>
 
-<nav class="categorias" aria-label="Categorias de receitas">
-            <a href="receita.html" class="cat-item">
-                <span class="cat-icone">01</span>
-
-            <a href="receita.html" class="cat-item">
-                <span class="cat-icone">02</span>
-                <strong>Almoço ou jantar</strong>
-            </a>
-            <a href="receita.html" class="cat-item">
-                <span class="cat-icone">03</span>
-                <strong>Lanches</strong>
-            </a>
-            <a href="receita.html" class="cat-item">
-                <span class="cat-icone">04</span>
-                <strong>Sobremesas</strong>
-            </a>
-        </nav>
-
  <section class="receitas-container" id="receitas">
 
             <div class="titulo-faixa">
@@ -52,7 +35,7 @@
             </div>
         <div class="carrossel">
             <article class="card">
-         <div class="card-img" style="background-image: url('media/receitas/mousseLimao.jpg');"></div>
+         <div class="card-img" style="background-image: url('{% static 'media/receitas/mousseLimao.jpg' %}');"></div>
                  <div class="card-info">
                         <div class="card-topo">
                             <h3>Mousse de Limão</h3>
@@ -63,7 +46,7 @@
                     </div>
                 </article>
 <article class="card">
-                    <div class="card-img" style="background-image: url('media/receitas/rocambolePrestigio.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'media/receitas/rocambolePrestigio.jpg' %});"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Rocambole de Prestígio</h3>
@@ -76,7 +59,7 @@
 
 
                 <article class="card">
-                    <div class="card-img" style="background-image: url('media/receitas/amburguerArtesanal.jpeg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'media/receitas/amburguerArtesanal.jpeg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Hambúrguer Artesanal</h3>
@@ -89,7 +72,7 @@
 
 
                 <article class="card">
-                    <div class="card-img" style="background-image: url('media/receitas/boloLimao.jpeg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'media/receitas/boloLimao.jpeg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Bolo Caseiro</h3>
@@ -100,7 +83,7 @@
                     </div>
                 </article>
  <article class="card">
-                    <div class="card-img" style="background-image: url('media/receitas/cremeGelado.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'media/receitas/cremeGelado.jpg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Creme Gelado</h3>
@@ -113,7 +96,7 @@
 
 
                 <article class="card">
-                    <div class="card-img" style="background-image: url('media/receitas/doceDeChcolate.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'media/receitas/doceDeChcolate.jpg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Doce de Chocolate</h3>
@@ -126,38 +109,43 @@
             </div>
         </section>
 </main>
-<footer>
 
-        <div class="footer-logo">
-            <div class="logo-texto">
-                Segredos da <span>Chef</span>
-            </div>
+<footer class="rodape">
+
+    <!-- Identidade do site -->
+    <div class="footer-logo">
+        <div class="logo-texto">
+            Os Segredos da <span>Chef</span>
         </div>
+    </div>
 
+    <!-- Linha divisória -->
+    <div class="footer-linha"></div>
 
-        <div class="footer-coluna">
-            <h3>Categorias de receitas</h3>
-            <a href="receita.html">Cozinha afetiva</a>
-            <a href="receita.html">Doces prazeres</a>
-            <a href="receita.html">Lanches nutritivos</a>
-        </div>
+    <!-- Links institucionais -->
+    <nav class="footer-links" aria-label="Links institucionais">
 
+        <a href="{% url 'receitas:receitas_lista' %}">
+            Todas as Receitas
+        </a>
 
-        <div class="footer-coluna">
-            <h3>Ocasiões de consumo</h3>
-            <a href="receita.html">Café da manhã</a>
-            <a href="receita.html">Almoço ou jantar</a>
-            <a href="receita.html">Sobremesa</a>
-        </div>
+        <a href="{% url 'usuarios:login' %}">
+            Login
+        </a>
 
+        <a href="{% url 'web:contato' %}">
+            Contato
+        </a>
 
-        <div class="footer-coluna">
-            <h3>Institucional</h3>
-             <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
-            <a href="{% url 'web:login' %}">Login</a>
-            <a href="{% url 'web:contato' %}">Contato</a>
-        </div>
-    </footer>
+    </nav>
+
+    <!-- Frase final -->
+    <p class="footer-frase">
+        O sabor de cozinhar está nos pequenos detalhes.
+    </p>
+
+</footer>
+
 
 
 </body>
