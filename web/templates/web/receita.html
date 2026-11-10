@@ -1,134 +1,164 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Os Segredos da Chef | Receitas</title>
-
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Site de receitas com sabor de magia.">
+   <link rel="shortcut icon" href="img/logo/logo site.png" type="image/x-icon">
+   <title>Os Segredos da Chef | Receitas</title>
     <link rel="stylesheet" href="{% static 'css/receita.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
-</head>
-
+   </head>
 <body>
-
-    <!-- Menu principal -->
-    <header>
-        <a href="{% url 'web:index' %}" class="logo">
-            Os Segredos da Chef
-        </a>
-
-        <nav>
-            <a href="{% url 'web:index' %}">Home</a>
-            <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+<header>
+    <a class="logo" href="{% url 'web:index' %}">
+    </a>
+        <nav class="menu-principal" aria-label="Menu principal">
+             <a href="{% url 'web:index' %}">Home</a>
+             <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
             <a href="{% url 'web:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
         </nav>
-    </header>
+</header>
+<main class="pagina-receitas">
+      <form class="busca receita-busca" action="#" method="get">
+            <input type="search" name="s" placeholder="Procurar receita">
+        </form>
 
-    <main>
+<nav class="categorias" aria-label="Categorias de receitas">
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">01</span>
 
-        <!-- Pesquisa -->
-        <section>
-            <h1>Encontre sua receita</h1>
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">02</span>
+                <strong>Almoço ou jantar</strong>
+            </a>
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">03</span>
+                <strong>Lanches</strong>
+            </a>
+            <a href="receita.html" class="cat-item">
+                <span class="cat-icone">04</span>
+                <strong>Sobremesas</strong>
+            </a>
+        </nav>
 
-            <form method="get" action="">
-                <input
-                    type="search"
-                    name="s"
-                    placeholder="Procurar receita..."
-                    value="{{ request.GET.s|default:'' }}"
-                >
-                <button type="submit">Pesquisar</button>
-            </form>
-        </section>
+ <section class="receitas-container" id="receitas">
 
-        <!-- Categorias -->
-        <section>
-            <h2>Categorias</h2>
+            <div class="titulo-faixa">
+                <h2>Receitas Destaque</h2>
+            </div>
+        <div class="carrossel">
+            <article class="card">
+         <div class="card-img" style="background-image: url('media/receitas/mousseLimao.jpg');"></div>
+                 <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Mousse de Limão</h3>
+                            <span>25 min</span>
+                        </div>
+                        <p>Uma sobremesa cremosa, fresca e simples para adoçar o dia.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+<article class="card">
+                    <div class="card-img" style="background-image: url('media/receitas/rocambolePrestigio.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Rocambole de Prestígio</h3>
+                            <span>30 min</span>
+                        </div>
+                        <p>Chocolate e ninho em uma receita macia, bonita e cheia de sabor.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+ </article>
 
-            <div class="categorias">
-                <span>Café da manhã</span>
-                <span>Almoço ou jantar</span>
-                <span>Lanches</span>
-                <span>Sobremesas</span>
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('media/receitas/amburguerArtesanal.jpeg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Hambúrguer Artesanal</h3>
+                            <span>35 min</span>
+                        </div>
+ <p>Um lanche caprichado com cara de fim de semana em família.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('media/receitas/boloLimao.jpeg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Bolo Caseiro</h3>
+                            <span>45 min</span>
+                        </div>
+                        <p>Uma receita simples, fofinha e perfeita para acompanhar um café.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+ <article class="card">
+                    <div class="card-img" style="background-image: url('media/receitas/cremeGelado.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Creme Gelado</h3>
+                            <span>20 min</span>
+                        </div>
+                        <p>Uma opção leve e cremosa para servir depois do almoço.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
+
+
+                <article class="card">
+                    <div class="card-img" style="background-image: url('media/receitas/doceDeChcolate.jpg');"></div>
+                    <div class="card-info">
+                        <div class="card-topo">
+                            <h3>Doce de Chocolate</h3>
+                          <span>30 min</span>
+                        </div>
+                        <p>Chocolate intenso em uma sobremesa bonita, rápida e deliciosa.</p>
+                        <a href="receita.html" class="btn-ver">Ver preparo</a>
+                    </div>
+                </article>
             </div>
         </section>
+</main>
+<footer>
 
-        <!-- Receitas -->
-        <section id="receitas">
-            <h2>Receitas em destaque</h2>
-
-            <div class="receitas-container">
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/mousseLimao.jpg"
-                         alt="Mousse de limão">
-                    <h3>Mousse de Limão</h3>
-                    <p>Uma sobremesa cremosa, fresca e simples.</p>
-                    <span>25 minutos</span>
-                </article>
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/rocambolePrestigio.jpg"
-                         alt="Rocambole de prestígio">
-                    <h3>Rocambole de Prestígio</h3>
-                    <p>Uma receita macia com chocolate e coco.</p>
-                    <span>30 minutos</span>
-                </article>
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/amburguerArtesanal.jpeg"
-                         alt="Hambúrguer artesanal">
-                    <h3>Hambúrguer Artesanal</h3>
-                    <p>Um lanche caprichado e saboroso.</p>
-                    <span>35 minutos</span>
-                </article>
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/boloLimao.jpeg"
-                         alt="Bolo caseiro">
-                    <h3>Bolo Caseiro</h3>
-                    <p>Uma receita fofinha para acompanhar o café.</p>
-                    <span>45 minutos</span>
-                </article>
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/cremeGelado.jpg"
-                         alt="Creme gelado">
-                    <h3>Creme Gelado</h3>
-                    <p>Uma sobremesa leve e cremosa.</p>
-                    <span>20 minutos</span>
-                </article>
-
-                <article class="card">
-                    <img src="{% get_media_prefix %}receitas/doceDeChcolate.jpg"
-                         alt="Doce de chocolate">
-                    <h3>Doce de Chocolate</h3>
-                    <p>Uma sobremesa rápida e deliciosa.</p>
-                    <span>30 minutos</span>
-                </article>
-
+        <div class="footer-logo">
+            <div class="logo-texto">
+                Segredos da <span>Chef</span>
             </div>
-        </section>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <div>
-            <h3>Os Segredos da Chef</h3>
-            <p>Receitas simples e saborosas para todos os momentos.</p>
         </div>
 
-        <div>
-            <h3>Navegação</h3>
-            <a href="{% url 'web:index' %}">Home</a>
-            <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+
+        <div class="footer-coluna">
+            <h3>Categorias de receitas</h3>
+            <a href="receita.html">Cozinha afetiva</a>
+            <a href="receita.html">Doces prazeres</a>
+            <a href="receita.html">Lanches nutritivos</a>
+        </div>
+
+
+        <div class="footer-coluna">
+            <h3>Ocasiões de consumo</h3>
+            <a href="receita.html">Café da manhã</a>
+            <a href="receita.html">Almoço ou jantar</a>
+            <a href="receita.html">Sobremesa</a>
+        </div>
+
+
+        <div class="footer-coluna">
+            <h3>Institucional</h3>
+             <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
+            <a href="{% url 'web:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
         </div>
     </footer>
+
 
 </body>
 </html>
