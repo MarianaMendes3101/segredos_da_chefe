@@ -7,20 +7,29 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 6%;
+    padding: 30px 6%;
     width: 100%;
     background: var(--cor-apoio);
 }
 
 /* Estiliza o nome do site */
 header .logo {
+     display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
+}
+/* Dimensionamento da imagem do portal */
+header .logo img {
+    width: 50px;
+    height: 100px;
+    object-fit: contain;
 }
 
 /* Destaca o título Segredos da Chef */
 header .logo-texto {
     color: var(--cor-primaria);
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -59,16 +68,10 @@ header .logo-texto {
         justify-content: center;
         gap: 16px;
     }
-
     header .logo-texto {
-        font-size: 1.7rem;
+        font-size: 1rem;
     }
 }
-
-
-
-
-
 :root {
   --cor-primaria: #720707;
   --cor-secundaria: #da9b76;
@@ -128,7 +131,14 @@ a { text-decoration: none; color: inherit; }
   transition: width var(--transicao);
   overflow: hidden;
 }
-
+.busca {
+    background: transparent;
+    padding: 0;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 350px;
+    border: none;
+}
 .admin-sidebar.fechado { width: 58px; }
 .admin-sidebar nav ul { list-style: none; padding-top: 12px; }
 
@@ -191,3 +201,79 @@ tbody tr:hover { background: #f0dfc8; }
 }
 
 
+
+/* RODAPÉ */
+.rodape {
+    background: var(--cor-primaria);
+    color: var(--cor-apoio);
+    padding: 45px 20px 25px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Nome do site */
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.footer-logo .logo-texto {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2rem;
+    color: var(--cor-apoio);
+}
+
+.footer-logo .logo-texto span {
+    color: var(--cor-secundaria);
+    font-style: italic;
+}
+
+/* Linha divisória */
+.footer-linha {
+    width: 70%;
+    max-width: 500px;
+    height: 1px;
+    background: var(--cor-secundaria);
+    margin: 0 auto 25px;
+}
+
+/* Links centralizados */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.footer-links a {
+    color: var(--cor-apoio);
+    font-size: 1rem;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Frase final */
+.footer-frase {
+    font-size: 0.9rem;
+    color: var(--cor-secundaria);
+    opacity: 0.9;
+}
+
+/* Responsividade */
+@media (max-width: 620px) {
+    .rodape {
+        padding: 35px 15px 20px;
+    }
+    .footer-links {
+        gap: 20px;
+    }
+}

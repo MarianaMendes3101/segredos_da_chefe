@@ -113,30 +113,43 @@
     </main>
 
 
-    <footer>
-        <div class="footer-logo">
-            <div class="logo-texto">
-                Segredos da <span>Chef</span>
-            </div>
+
+<footer class="rodape">
+
+    <!-- Identidade do site -->
+    <div class="footer-logo">
+        <div class="logo-texto">
+            Os Segredos da <span>Chef</span>
         </div>
-        <div class="footer-coluna">
-            <h3>Categorias de receitas</h3>
-            <a href="receita.html">Cozinha afetiva</a>
-            <a href="receita.html">Doces prazeres</a>
-            <a href="receita.html">Lanches nutritivos</a>
-        </div>
-        <div class="footer-coluna">
-            <h3>Ocasiões de consumo</h3>
-            <a href="receita.html">Café da manhã</a>
-            <a href="receita.html">Almoço ou jantar</a>
-            <a href="receita.html">Sobremesa</a>
-        </div>
-        <div class="footer-coluna">
-            <h3>Institucional</h3>
-            <a href="{% url 'web:login' %}">Login</a>
-            <a href="{% url 'web:contato' %}">Contato</a>
-        </div>
-    </footer>
+    </div>
+
+    <!-- Linha divisória -->
+    <div class="footer-linha"></div>
+
+    <!-- Links institucionais -->
+    <nav class="footer-links" aria-label="Links institucionais">
+
+        <a href="{% url 'receitas:receitas_lista' %}">
+            Todas as Receitas
+        </a>
+
+        <a href="{% url 'web:login' %}">
+            Login
+        </a>
+
+        <a href="{% url 'web:contato' %}">
+            Contato
+        </a>
+
+    </nav>
+
+    <!-- Frase final -->
+    <p class="footer-frase">
+        O sabor de cozinhar está nos pequenos detalhes.
+    </p>
+
+</footer>
+
 
 
     <script>

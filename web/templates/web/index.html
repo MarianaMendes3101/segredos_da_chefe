@@ -21,31 +21,32 @@
             <a href="{% url 'web:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
 
+            <!-- Mostra o botão de cadastro apenas se o usuário logado for da equipe/adm -->
+    {% if request.user.is_staff %}
+        <a href="{% url 'receitas:cadastrar_receita' %}">Cadastrar Receita</a>
+    {% endif %}
+
+    <a href="{% url 'web:contato' %}">Contato</a>
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'web:logout' %}">Sair</a>
+    {% else %}
+        <a href="{% url 'web:login' %}">Login</a>
+    {% endif %}
+
         </nav>
     </header>
 <main>
         <section class="banner">
-            <div class="banner-texto"> <h1>Receitas feitas com amor</h1> <p>O prazer de cozinhar e os segredos
-                da culinária caseira revelados para você.</p>
-            <form class="busca" action="#" method="get">
-                <input type="search" name="s" placeholder="Procurar receita">
-            </form>
+            <div class="banner-texto"> <h1>Receitas feitas com amor</h1> <h3>O prazer de cozinhar e os segredos
+                da culinária caseira revelados para você.</h3>
+           <form class="busca" action="{% url 'receitas:receitas_lista' %}" method="get">
+    <input type="search" name="s" placeholder="Procurar receita">
+    <button type="submit" style="display: none;"></button>
+</form>
             </div>
         </section>
-    <nav class="categorias" aria-label="Receitas por categoria">
-         <a href="receita.html" class="cat-item">
-                <span class="cat-icone">01</span>
-                <strong>Café da Manhã</strong>
-             </a>
-        <a href="receita.html" class="cat-item">
-                <span class="cat-icone">03</span>
-                <strong>Lanches</strong>
-            </a>
-            <a href="receita.html" class="cat-item">
-                <span class="cat-icone">04</span>
-                <strong>Sobremesas</strong>
-            </a>
-    </nav>
+
   <!-- Secao de receitas: mostra os cards com as receitas em destaque. -->
         <section class="receitas-container" id="receitas">
 
@@ -59,7 +60,7 @@
                 <!-- Article: representa um conteudo independente, neste caso uma receita. -->
                 <article class="card">
                     <!-- Imagem da receita colocada pelo CSS inline no background. -->
-                    <div class="card-img" style="background-image: url('img/perfil/img2.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img2.jpg '%}');"></div>
                     <!-- Informacoes da receita. -->
                     <div class="card-info">
                         <div class="card-topo">
@@ -73,7 +74,7 @@
 
 
                 <article class="card">
-                    <div class="card-img" style="background-image: url('img/perfil/img3.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img3.jpg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Rocambole de Prestígio</h3>
@@ -86,7 +87,7 @@
 
 
                 <article class="card">
-                    <div class="card-img" style="background-image: url('img/perfil/img4.jpg');"></div>
+                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img4.jpg' %}');"></div>
                     <div class="card-info">
                         <div class="card-topo">
                             <h3>Hambúrguer Artesanal</h3>
@@ -103,41 +104,43 @@
 
 
     <!-- Rodape: area final com nome do site e links importantes. -->
-    <footer>
-        <!-- Nome do site no rodape. -->
-        <div class="footer-logo">
-            <div class="logo-texto">
-                Segredos da <span>Chef</span>
-            </div>
+
+<footer class="rodape">
+
+    <!-- Identidade do site -->
+    <div class="footer-logo">
+        <div class="logo-texto">
+            Os Segredos da <span>Chef</span>
         </div>
+    </div>
 
+    <!-- Linha divisória -->
+    <div class="footer-linha"></div>
 
-        <!-- Links de categorias de receitas. -->
-        <div class="footer-coluna">
-            <h3>Categorias de receitas</h3>
-            <a href="receita.html">Cozinha afetiva</a>
-            <a href="receita.html">Doces prazeres</a>
-            <a href="receita.html">Lanches nutritivos</a>
-        </div>
+    <!-- Links institucionais -->
+    <nav class="footer-links" aria-label="Links institucionais">
 
+        <a href="{% url 'receitas:receitas_lista' %}">
+            Todas as Receitas
+        </a>
 
-        <!-- Links de ocasioes de consumo. -->
-        <div class="footer-coluna">
-            <h3>Ocasiões de consumo</h3>
-            <a href="receita.html">Café da manhã</a>
-            <a href="receita.html">Almoço ou jantar</a>
-            <a href="receita.html">Sobremesa</a>
-        </div>
+        <a href="{% url 'web:login' %}">
+            Login
+        </a>
 
+        <a href="{% url 'web:contato' %}">
+            Contato
+        </a>
 
-        <!-- Links institucionais do site. -->
-        <div class="footer-coluna">
-            <h3>Institucional</h3>
-             <a href="{% url 'receitas:receitas_lista' %}">Todas as Receitas</a>
-            <a href="{% url 'web:login' %}">Login</a>
-            <a href="{% url 'web:contato' %}">Contato</a>
-        </div>
-    </footer>
+    </nav>
+
+    <!-- Frase final -->
+    <p class="footer-frase">
+        O sabor de cozinhar está nos pequenos detalhes.
+    </p>
+
+</footer>
+
 </body>
 </html>
 
