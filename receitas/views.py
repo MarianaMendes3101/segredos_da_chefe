@@ -1,19 +1,6 @@
-from django.http import request
 from django.shortcuts import render, get_object_or_404
 from .models import Receita, Categoria
-from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
-from .models import Receita
 
-# Função auxiliar para verificar se o usuário é Administrador/Staff
-def is_admin(user):
-    return user.is_authenticated and user.is_staff
-@user_passes_test(is_admin, login_url='/login/')
-def cadastrar_receita(request):
-    if request.method == 'POST':
-        # Lógica para salvar a receita no banco de dados
-        pass
-    return render(request, 'web/cadastrar_receita.html')
 
 def index(request):
    destaques = Receita.objects.all()
