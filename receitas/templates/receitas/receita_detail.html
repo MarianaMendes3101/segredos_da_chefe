@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}{{ receita.titulo }} | Segredos da Chef{% endblock %}
+{% block content %}
+<section class="panel"><div class="toolbar"><span class="tag">{{ receita.categoria.nome }}</span><span class="muted">Tempo de preparo: {{ receita.tempo_preparo }}</span></div><h1>{{ receita.titulo }}</h1>{% if receita.imagem %}<img src="{{ receita.imagem.url }}" alt="{{ receita.titulo }}" style="width:100%;max-height:380px;object-fit:cover;border-radius:12px">{% endif %}<p>{{ receita.descricao }}</p><h2>Ingredientes</h2><p>{{ receita.ingredientes|linebreaksbr|default:"Ingredientes ainda não informados." }}</p><h2>Modo de preparo</h2><p>{{ receita.modo_preparo|linebreaksbr|default:"Modo de preparo ainda não informado." }}</p><div class="form-actions"><a class="btn secondary" href="{% url 'receitas:receita_list' %}">Voltar</a><a class="btn" href="{% url 'receitas:receita_update' receita.pk %}">Editar receita</a><a class="btn danger" href="{% url 'receitas:receita_delete' receita.pk %}">Excluir receita</a></div></section>
+{% endblock %}
