@@ -18,7 +18,6 @@
         <nav class="menu-principal" aria-label="Menu-principal">
             <a href="{% url 'web:index' %}">Home</a>
              <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
-            <a href="{% url 'usuarios:login' %}">Login</a>
             <a href="{% url 'web:contato' %}">Contato</a>
 
             <!-- Mostra o botão de cadastro apenas se o usuário logado for da equipe/adm -->
@@ -26,12 +25,10 @@
         <a href="{% url 'receitas:cadastrar_receita' %}">Cadastrar Receita</a>
     {% endif %}
 
-    <a href="{% url 'web:contato' %}">Contato</a>
-
     {% if request.user.is_authenticated %}
         <form method="POST" action="{% url 'usuarios:logout' %}">
                             {% csrf_token %}
-        <button >Sair</button>
+            <button type="button" >Sair</button>
         </form>
     {% else %}
         <a href="{% url 'usuarios:login' %}">Login</a>

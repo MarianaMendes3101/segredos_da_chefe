@@ -277,3 +277,10 @@ tbody tr:hover { background: #f0dfc8; }
         gap: 20px;
     }
 }
+
+/*botao de sair -ADM-*/
+.button {
+    background-color: white;
+    border: none;
+    color: #4CAF50;
+}
