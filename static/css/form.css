@@ -140,16 +140,16 @@ input[type="submit"]:hover {
     background: rgba(114, 7, 7, 0.08);
 }
 /*botao de sair -ADM-*/
-
-.form-sair{
-     background: none;
-     border-radius: 0;
-     box-shadow: none;
-     margin: 0;
-     max-width: 0;
-     padding: 0;
-     width: auto;
+.menu-principal form.form-sair  {
     background: transparent;
     border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    width: auto;
 }
-
+.menu-principal .form-sair button:hover {
+    color: var(--cor-secundaria);
+}

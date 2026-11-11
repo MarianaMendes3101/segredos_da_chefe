@@ -28,7 +28,7 @@
     {% if request.user.is_authenticated %}
         <form method="POST" action="{% url 'usuarios:logout' %}" class="form-sair">
                             {% csrf_token %}
-            <button type="submit" class="butaozin-adm-sair">Sair</button>
+            <button type="submit">Sair</button>
         </form>
     {% else %}
         <a href="{% url 'usuarios:login' %}">Login</a>

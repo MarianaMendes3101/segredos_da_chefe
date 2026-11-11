@@ -41,17 +41,22 @@ header .logo-texto {
     gap: 30px;
 }
 
-/* Estiliza os links */
-.menu-principal a {
+/* Estiliza os links e o botão de sair */
+.menu-principal a,
+.menu-principal .form-sair button {
+    background: transparent;
+    border: none;
     color: var(--cor-primaria);
+    font-family: 'Sulphur Point', Arial, sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
     transition: color 0.3s ease;
 }
-
 /* Efeito ao passar o mouse */
-.menu-principal a:hover {
+.menu-principal a:hover,
+.menu-principal .form-sair button:hover {
     color: var(--cor-secundaria);
 }
 
