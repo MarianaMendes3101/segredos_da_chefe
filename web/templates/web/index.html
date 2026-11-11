@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-                <title>TESTE JHENNYFER</title>
+                <title>Os Segredos da Chef | Home</title>
      <!-- Conexão com os arquivos CSS -->
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
@@ -26,9 +26,9 @@
     {% endif %}
 
     {% if request.user.is_authenticated %}
-        <form method="POST" action="{% url 'usuarios:logout' %}">
+        <form method="POST" action="{% url 'usuarios:logout' %}" class="form-sair">
                             {% csrf_token %}
-            <button type="button" >Sair</button>
+            <button type="submit" class="butaozin-adm-sair">Sair</button>
         </form>
     {% else %}
         <a href="{% url 'usuarios:login' %}">Login</a>

@@ -139,3 +139,17 @@ input[type="submit"]:hover {
 .aba:hover:not(.ativa) {
     background: rgba(114, 7, 7, 0.08);
 }
+/*botao de sair -ADM-*/
+
+.form-sair{
+     background: none;
+     border-radius: 0;
+     box-shadow: none;
+     margin: 0;
+     max-width: 0;
+     padding: 0;
+     width: auto;
+    background: transparent;
+    border: none;
+}
+
