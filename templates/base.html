@@ -30,8 +30,9 @@
   <nav aria-label="Menu principal">
     <a href="{% url 'web:index' %}">Início</a>
     <a href="{% url 'receitas:receita_list' %}">Receitas</a>
+{% if not user.is_staff %}
     <a href="{% url 'contato:criar' %}">Contato</a>
-
+{% endif %}
 {% if user.is_authenticated %}
     {% if user.is_staff %}
         <a href="{% url 'web:painel' %}">Painel</a>

@@ -23,7 +23,9 @@ class Receita(models.Model):
     modo_preparo = models.TextField('Modo de Preparo', blank=True)
     imagem = models.ImageField(
         'Imagem da Receita',
-        upload_to='receitas/'
+        upload_to='receitas/',
+        blank=True,
+        null=True
     )
     categoria = models.ForeignKey(
         Categoria,
