@@ -38,7 +38,6 @@
         <a href="{% url 'web:painel' %}">Painel</a>
         <a href="{% url 'usuarios:lista' %}">Usuários</a>
         <a href="{% url 'contato:lista' %}">Mensagens</a>
-        <a href="/admin/">Administração</a>
     {% endif %}
 
     <form method="post" action="{% url 'usuarios:logout' %}">
