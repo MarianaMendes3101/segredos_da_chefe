@@ -16,24 +16,25 @@ class Categoria(models.Model):
 
 
 class Receita(models.Model):
-    OCASIOES = [
-        ('sobremesa', 'Sobremesa'),
-        ('lanche', 'Lanches'),
-    ]
-
     titulo = models.CharField('Título', max_length=150)
     slug = models.SlugField('Slug / URL', unique=True)
     tempo_preparo = models.CharField('Tempo de Preparo', max_length=30)
     ingredientes = models.TextField('Ingredientes', blank=True)
     modo_preparo = models.TextField('Modo de Preparo', blank=True)
-    imagem = models.ImageField('Imagem da Receita', upload_to='receitas/')
+    imagem = models.ImageField(
+        'Imagem da Receita',
+        upload_to='receitas/'
+    )
     categoria = models.ForeignKey(
         Categoria,
         on_delete=models.CASCADE,
         related_name='receitas',
         verbose_name='Categoria'
     )
-    destaque = models.BooleanField('Exibir na Home (Destaque)', default=False)
+    destaque = models.BooleanField(
+        'Exibir na Home (Destaque)',
+        default=False
+    )
     criado_em = models.DateTimeField('Cadastrado em', auto_now_add=True)
 
     class Meta:

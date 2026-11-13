@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Criar conta | Segredos da Chef{% endblock %}
+{% block content %}
+<section class="panel" style="max-width:700px;margin:0 auto"><h1>Criar conta</h1><p class="muted">Preencha os dados para se cadastrar no Segredos da Chef.</p><form method="post" novalidate>{% csrf_token %}{% if form.non_field_errors %}<div class="field-errors">{{ form.non_field_errors }}</div>{% endif %}{% for field in form %}<label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>{{ field }}{% if field.help_text %}<p class="helptext">{{ field.help_text|safe }}</p>{% endif %}{% if field.errors %}<div class="field-errors">{{ field.errors }}</div>{% endif %}{% endfor %}<div class="form-actions"><button type="submit">Cadastrar</button><a class="btn secondary" href="{% url 'usuarios:login' %}">Já tenho conta</a></div></form></section>
+{% endblock %}
