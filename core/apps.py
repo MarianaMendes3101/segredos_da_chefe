@@ -1,4 +1,5 @@
 from django.apps import AppConfig
 
-class ReceitasConfig(AppConfig):
-   name = 'receitas'
+
+class CoreConfig(AppConfig):
+    name = 'core'

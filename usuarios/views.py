@@ -1,25 +1,54 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model
-from datetime import datetime
+from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import CadastroUsuarioForm, UsuarioAdminForm
+from .models import Usuario
 
-User = get_user_model()
 
-def login_view(request):
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        email = request.POST.get('email')
-        sexo = request.POST.get('sexo')
-        nascimento = request.POST.get('nascimento')
+def cadastro(request):
+    if request.method == "POST":
+        form = CadastroUsuarioForm(request.POST)
+        if form.is_valid():
+            usuario = form.save()
+            messages.success(request, "Conta criada com sucesso. Você já pode entrar.")
+            return redirect("usuarios:login")
+    else:
+        form = CadastroUsuarioForm()
+    return render(request, "usuarios/cadastro.html", {"form": form})
 
-        # Exemplo básico de cadastro rápido pela tela de login
-        if email and not User.objects.filter(email=email).exists():
-            username = email.split('@')[0]
-            user = User.objects.create_user(username=username, email=email, first_name=nome)
-            user.sexo = sexo
-            if nascimento:
-                user.data_nascimento = datetime.strptime(nascimento, '%Y-%m-%d').date()
-            user.save()
 
-        return redirect('login')
+def somente_equipe(user):
+    return user.is_authenticated and user.is_staff
 
-    return render(request, 'usuarios/login.html')
+
+@user_passes_test(somente_equipe)
+def lista_usuarios(request):
+    return render(request, "usuarios/usuario_list.html", {"usuarios": Usuario.objects.order_by("username")})
+
+
+@user_passes_test(somente_equipe)
+def editar_usuario(request, pk):
+    usuario = get_object_or_404(Usuario, pk=pk)
+    if request.method == "POST":
+        form = UsuarioAdminForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuário atualizado com sucesso.")
+            return redirect("usuarios:lista")
+    else:
+        form = UsuarioAdminForm(instance=usuario)
+    return render(request, "usuarios/usuario_form.html", {"form": form, "titulo_pagina": "Editar usuário"})
+
+
+@user_passes_test(somente_equipe)
+def excluir_usuario(request, pk):
+    usuario = get_object_or_404(Usuario, pk=pk)
+    if usuario.pk == request.user.pk:
+        messages.error(request, "Você não pode excluir a própria conta por esta tela.")
+        return redirect("usuarios:lista")
+    if request.method == "POST":
+        usuario.delete()
+        messages.success(request, "Usuário excluído com sucesso.")
+        return redirect("usuarios:lista")
+    return render(request, "usuarios/usuario_confirm_delete.html", {"usuario": usuario})

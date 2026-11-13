@@ -35,8 +35,8 @@ class Receita(models.Model):
    descricao = models.TextField('Descrição Curta', help_text="Texto exibido nos cards da Home e do Carrossel")
    ingredientes = models.TextField('Ingredientes', blank=True, help_text="Separe os ingredientes por linha")
    modo_preparo = models.TextField('Modo de Preparo', blank=True, help_text="Passo a passo do preparo")
-   imagem = models.ImageField('Imagem da Receita', upload_to='receitas/')
-   categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='receitas', verbose_name='Categoria')
+   imagem = models.ImageField('Imagem da Receita', upload_to='receitas/', blank=True)
+   categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name='receitas', verbose_name='Categoria')
    ocasiao = models.CharField('Ocasião de Consumo', max_length=50, choices=OCASIOES, blank=True, null=True)
    destaque = models.BooleanField('Exibir na Home (Destaque)', default=False)
    criado_em = models.DateTimeField('Cadastrado em', auto_now_add=True)
@@ -50,4 +50,3 @@ class Receita(models.Model):
 
    def __str__(self):
        return self.titulo
-

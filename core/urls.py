@@ -1,9 +1,7 @@
-
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', include('web.urls')),
-   path('usuarios/', include('usuarios.urls')),
+    # Mapeia a página inicial do app core para a função index (ou o nome da sua view)
+    path('', views.index, name='index'),
 ]
