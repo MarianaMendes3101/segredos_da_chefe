@@ -1,147 +1,23 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-                <title>TESTE JHENNYFER</title>
-     <!-- Conexão com os arquivos CSS -->
-    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-    <link rel="stylesheet" href="{% static 'css/receita.css' %}">
-</head>
-<body>
-    <header>
-        <a class="logo" href="{% url 'web:index' %}">
-            <div class="logo-texto">Segredos da <span>Chef</span></div>
-        </a>
+{% extends 'base.html' %}
+{% block title %}Início | Os Segredos da Chef{% endblock %}
+{% block content %}
 
-        <nav class="menu-principal" aria-label="Menu-principal">
-            <a href="{% url 'web:index' %}">Home</a>
-             <a href="{% url 'receitas:receitas_lista' %}">Receitas</a>
-            <a href="{% url 'web:contato' %}">Contato</a>
-
-            <!-- Mostra o botão de cadastro apenas se o usuário logado for da equipe/adm -->
-    {% if request.user.is_staff %}
-        <a href="{% url 'receitas:cadastrar_receita' %}">Cadastrar Receita</a>
-    {% endif %}
-
-    {% if request.user.is_authenticated %}
-        <form method="POST" action="{% url 'usuarios:logout' %}">
-                            {% csrf_token %}
-            <button type="button" >Sair</button>
-        </form>
-    {% else %}
-        <a href="{% url 'usuarios:login' %}">Login</a>
-    {% endif %}
-
-        </nav>
-    </header>
-<main>
-        <section class="banner">
-            <div class="banner-texto"> <h1>Receitas feitas com amor</h1> <h3>O prazer de cozinhar e os segredos
-                da culinária caseira revelados para você.</h3>
-           <form class="busca" action="{% url 'receitas:receitas_lista' %}" method="get">
-    <input type="search" name="s" placeholder="Procurar receita">
-    <button type="submit" style="display: none;"></button>
-</form>
-            </div>
-        </section>
-
-  <!-- Secao de receitas: mostra os cards com as receitas em destaque. -->
-        <section class="receitas-container" id="receitas">
-
-            <div class="titulo-faixa">
-                <h2>Receitas Destaque</h2>
-            </div>
-
-
-            <!-- Grade: organiza os cards lado a lado. -->
-            <div class="grade">
-                <!-- Article: representa um conteudo independente, neste caso uma receita. -->
-                <article class="card">
-                    <!-- Imagem da receita colocada pelo CSS inline no background. -->
-                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img2.jpg '%}');"></div>
-                    <!-- Informacoes da receita. -->
-                    <div class="card-info">
-                        <div class="card-topo">
-                            <h3>Mousse de Limão</h3>
-                            <span>25 min</span>
-                        </div>
-                        <p>Uma sobremesa cremosa, fresca e simples para adoçar o dia.</p>
-                        <a href="receita.html" class="btn-ver">Ver preparo</a>
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img3.jpg' %}');"></div>
-                    <div class="card-info">
-                        <div class="card-topo">
-                            <h3>Rocambole de Prestígio</h3>
-                            <span>30 min</span>
-                        </div>
-                        <p>Chocolate e ninho em uma receita macia, bonita e cheia de sabor.</p>
-                        <a href="receita.html" class="btn-ver">Ver preparo</a>
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <div class="card-img" style="background-image: url('{% static 'img/receitas/img4.jpg' %}');"></div>
-                    <div class="card-info">
-                        <div class="card-topo">
-                            <h3>Hambúrguer Artesanal</h3>
-                            <span>35 min</span>
-                        </div>
-                        <p>Um lanche caprichado com cara de fim de semana em família.</p>
-                        <a href="receita.html" class="btn-ver">Ver preparo</a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-</main>
-
-
-    <!-- Rodape: area final com nome do site e links importantes. -->
-
-<footer class="rodape">
-
-    <!-- Identidade do site -->
-    <div class="footer-logo">
-        <div class="logo-texto">
-            Os Segredos da <span>Chef</span>
-        </div>
-    </div>
-
-    <!-- Linha divisória -->
-    <div class="footer-linha"></div>
-
-    <!-- Links institucionais -->
-    <nav class="footer-links" aria-label="Links institucionais">
-
-        <a href="{% url 'receitas:receitas_lista' %}">
-            Todas as Receitas
-        </a>
-
-        <a href="{% url 'usuarios:login' %}">
-            Login
-        </a>
-
-        <a href="{% url 'web:contato' %}">
-            Contato
-        </a>
-
-    </nav>
-
-    <!-- Frase final -->
-    <p class="footer-frase">
-        O sabor de cozinhar está nos pequenos detalhes.
-    </p>
-
-</footer>
-
-</body>
-</html>
-
-
+<section class="hero">
+  <span class="tag">Cozinha caseira</span>
+  <h1>Receitas feitas com amor</h1>
+  <p>Descubra ideias deliciosas, organize suas receitas favoritas e compartilhe seus segredos na cozinha.</p>
+  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_list' %}">Explorar receitas</a>{% if user.is_staff %}
+    <a class="btn light" href="{% url 'receitas:receita_create' %}">
+        Cadastrar receita
+    </a>
+{% endif %}</div>
+</section>
+<section class="panel">
+  <h2>Categorias</h2>
+  {% if categorias %}<div class="cards">{% for categoria in categorias %}<article class="recipe-card"><h3>{{ categoria.nome }}</h3><p class="muted">{{ categoria.receitas.count }} receita(s)</p><a class="btn light" href="{% url 'receitas:receita_list' %}?categoria={{ categoria.id }}">Ver receitas</a></article>{% endfor %}</div>{% else %}<p>Ainda não há categorias cadastradas. <a href="{% url 'receitas:categoria_create' %}">Cadastre a primeira categoria</a>.</p>{% endif %}
+</section>
+<section class="panel">
+  <h2>Receitas em destaque</h2>
+  {% if destaques %}<div class="cards">{% for receita in destaques %}<article class="recipe-card">{% if receita.imagem %}<img src="{{ receita.imagem.url }}" alt="{{ receita.titulo }}" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px">{% endif %}<h3>{{ receita.titulo }}</h3><p>{{ receita.descricao|truncatewords:24 }}</p><p><span class="tag">{{ receita.categoria.nome }}</span> · {{ receita.tempo_preparo }}</p><a class="btn" href="{% url 'receitas:receita_detail' receita.pk %}">Ver receita</a></article>{% endfor %}</div>{% else %}<p>As receitas marcadas como destaque aparecerão aqui. Por enquanto, veja todas as receitas cadastradas.</p><a class="btn" href="{% url 'receitas:receita_list' %}">Ver todas</a>{% endif %}
+</section>
+{% endblock %}

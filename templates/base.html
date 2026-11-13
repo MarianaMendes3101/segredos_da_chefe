@@ -1,0 +1,61 @@
+
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Os Segredos da Chef{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    :root{--wine:#720707;--peach:#da9b76;--cream:#fcf5df;--paper:#fffaf2;--ink:#3d2520}
+    body{margin:0;background:#f7f0e7;color:var(--ink);font:16px Arial,sans-serif;line-height:1.5}
+    header.site-header{background:var(--wine);color:white;padding:16px max(20px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .brand{font-family:Georgia,serif;font-size:1.45rem;font-weight:bold;color:white;text-decoration:none}.brand span{color:var(--peach);font-style:italic}
+    nav{display:flex;gap:14px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-weight:600}nav a:hover{text-decoration:underline;color:var(--peach)}nav form{display:inline;margin:0}nav .nav-logout{padding:0;background:transparent;color:white;border:0;font:inherit;font-weight:600;cursor:pointer}nav .nav-logout:hover{text-decoration:underline;color:var(--peach)}
+    main{max-width:1100px;margin:28px auto;padding:0 18px;min-height:60vh}.hero,.panel{background:var(--paper);border-radius:14px;padding:26px;box-shadow:0 6px 20px #4b070710;margin-bottom:20px}
+    h1,h2,h3{color:var(--wine);font-family:Georgia,serif}h1{margin-top:0}.muted{color:#725e56}.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:18px 0}
+    .btn,button,input[type=submit]{display:inline-block;background:var(--wine);color:white;border:0;border-radius:7px;padding:10px 15px;text-decoration:none;font-weight:700;cursor:pointer;font-size:.95rem}.btn.secondary{background:#76564a}.btn.danger{background:#a32d2d}.btn.light{background:#f0dfce;color:var(--wine)}
+    input,select,textarea{width:100%;padding:10px 11px;border:1px solid #d9c7b9;border-radius:7px;background:white;font:inherit;color:var(--ink);box-sizing:border-box}label{display:block;font-weight:700;margin:10px 0 5px}.helptext{color:#76645c;font-size:.9rem}.field-errors,.errorlist{color:#a32020;margin:4px 0;padding-left:20px}.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .messages{list-style:none;padding:0}.messages li{padding:12px;border-radius:7px;margin:8px 0;background:#e7f5e8;color:#205c2a}.messages li.error{background:#ffebeb;color:#8d1f1f}
+    table{width:100%;border-collapse:collapse;background:white}th,td{padding:11px;border-bottom:1px solid #eaded4;text-align:left;vertical-align:top}th{background:#f2e3d6;color:var(--wine)}.table-wrap{overflow-x:auto}.actions{display:flex;gap:7px;flex-wrap:wrap}.actions .btn{padding:7px 10px;font-size:.85rem}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.recipe-card{background:white;border:1px solid #eaded4;border-radius:12px;padding:17px}.recipe-card h3{margin:0 0 8px}.recipe-card p{margin:8px 0}.tag{display:inline-block;background:#f4e0ce;color:var(--wine);padding:3px 8px;border-radius:20px;font-size:.85rem}
+    footer{padding:22px;text-align:center;background:#4d0909;color:#fff4e5;margin-top:32px;font-size:.9rem}
+    @media(max-width:600px){header.site-header{padding:16px}main{margin-top:18px}.panel,.hero{padding:18px}th,td{padding:8px}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{% url 'web:index' %}">Os Segredos da <span>Chef</span></a>
+  <nav aria-label="Menu principal">
+    <a href="{% url 'web:index' %}">Início</a>
+    <a href="{% url 'receitas:receita_list' %}">Receitas</a>
+    <a href="{% url 'contato:criar' %}">Contato</a>
+
+{% if user.is_authenticated %}
+    {% if user.is_staff %}
+        <a href="{% url 'web:painel' %}">Painel</a>
+        <a href="{% url 'usuarios:lista' %}">Usuários</a>
+        <a href="{% url 'contato:lista' %}">Mensagens</a>
+    {% endif %}
+
+    <form method="post" action="{% url 'usuarios:logout' %}">
+        {% csrf_token %}
+        <button class="nav-logout" type="submit">
+            Sair ({{ user.username }})
+        </button>
+    </form>
+{% else %}
+    <a href="{% url 'usuarios:login' %}">Entrar</a>
+    <a href="{% url 'usuarios:cadastro' %}">Cadastrar</a>
+{% endif %}
+
+  </nav>
+</header>
+<main>
+  {% if messages %}<ul class="messages">{% for message in messages %}<li class="{{ message.tags }}">{{ message }}</li>{% endfor %}</ul>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+<footer>© 2026 Os Segredos da Chef · Receitas feitas com carinho.</footer>
+</body>
+</html>
