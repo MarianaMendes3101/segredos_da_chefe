@@ -32,12 +32,26 @@
     <a href="{% url 'receitas:receita_list' %}">Receitas</a>
     <a href="{% url 'receitas:categoria_list' %}">Categorias</a>
     <a href="{% url 'contato:criar' %}">Contato</a>
-    {% if user.is_authenticated %}
-      {% if user.is_staff %}<a href="{% url 'usuarios:lista' %}">Usuários</a><a href="{% url 'contato:lista' %}">Mensagens</a><a href="/admin/">Administração</a>{% endif %}
-      <form method="post" action="{% url 'usuarios:logout' %}">{% csrf_token %}<button class="nav-logout" type="submit">Sair ({{ user.username }})</button></form>
-    {% else %}
-      <a href="{% url 'usuarios:login' %}">Entrar</a>
+
+{% if user.is_authenticated %}
+    {% if user.is_staff %}
+        <a href="{% url 'web:painel' %}">Painel</a>
+        <a href="{% url 'usuarios:lista' %}">Usuários</a>
+        <a href="{% url 'contato:lista' %}">Mensagens</a>
+        <a href="/admin/">Administração</a>
     {% endif %}
+
+    <form method="post" action="{% url 'usuarios:logout' %}">
+        {% csrf_token %}
+        <button class="nav-logout" type="submit">
+            Sair ({{ user.username }})
+        </button>
+    </form>
+{% else %}
+    <a href="{% url 'usuarios:login' %}">Entrar</a>
+    <a href="{% url 'usuarios:cadastro' %}">Cadastrar</a>
+{% endif %}
+
   </nav>
 </header>
 <main>

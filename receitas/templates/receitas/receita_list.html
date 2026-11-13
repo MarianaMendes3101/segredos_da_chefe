@@ -4,7 +4,17 @@
 <section class="panel">
   <h1>Receitas cadastradas</h1>
   <p class="muted">Consulte, cadastre, edite ou exclua receitas. Os registros são salvos no banco de dados.</p>
-  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_create' %}">+ Cadastrar receita</a><a class="btn secondary" href="{% url 'receitas:categoria_list' %}">Gerenciar categorias</a></div>
+{% if user.is_staff %}
+<div class="toolbar">
+    <a class="btn" href="{% url 'receitas:receita_create' %}">
+        + Cadastrar receita
+    </a>
+
+    <a class="btn secondary" href="{% url 'receitas:categoria_list' %}">
+        Gerenciar categorias
+    </a>
+</div>
+{% endif %}
   <form method="get" class="toolbar" role="search">
     <div style="flex:2;min-width:180px"><label for="s">Buscar por título</label><input id="s" type="search" name="s" value="{{ termo_busca }}" placeholder="Ex.: bolo de cenoura"></div>
     <div style="flex:1;min-width:160px"><label for="categoria">Categoria</label><select id="categoria" name="categoria"><option value="">Todas</option>{% for categoria in categorias %}<option value="{{ categoria.id }}" {% if categoria_selecionada == categoria.id|stringformat:'s' %}selected{% endif %}>{{ categoria.nome }}</option>{% endfor %}</select></div>

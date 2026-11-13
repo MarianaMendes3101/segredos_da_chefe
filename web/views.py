@@ -1,12 +1,16 @@
 from django.shortcuts import render
 from receitas.models import Categoria, Receita
 from usuarios.models import Usuario
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def home(request):
     destaques = Receita.objects.filter(destaque=True).select_related("categoria")[:6]
     recentes = Receita.objects.select_related("categoria").all()[:6]
     return render(request, "web/index.html", {"destaques": destaques, "recentes": recentes, "categorias": Categoria.objects.all()})
+
+@login_required
+@user_passes_test(lambda user: user.is_staff)
 
 
 def painel(request):

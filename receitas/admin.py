@@ -13,5 +13,5 @@ class CategoriaAdmin(admin.ModelAdmin):
 class ReceitaAdmin(admin.ModelAdmin):
     list_display = ("titulo", "categoria", "tempo_preparo", "destaque", "criado_em")
     list_filter = ("categoria", "destaque")
-    search_fields = ("titulo", "descricao", "ingredientes")
+    search_fields = ("titulo", "ingredientes", "modo_preparo")
     prepopulated_fields = {"slug": ("titulo",)}

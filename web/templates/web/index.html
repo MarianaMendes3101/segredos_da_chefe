@@ -5,7 +5,11 @@
   <span class="tag">Cozinha caseira</span>
   <h1>Receitas feitas com amor</h1>
   <p>Descubra ideias deliciosas, organize suas receitas favoritas e compartilhe seus segredos na cozinha.</p>
-  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_list' %}">Explorar receitas</a><a class="btn light" href="{% url 'receitas:receita_create' %}">Cadastrar receita</a></div>
+  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_list' %}">Explorar receitas</a>{% if user.is_staff %}
+    <a class="btn light" href="{% url 'receitas:receita_create' %}">
+        Cadastrar receita
+    </a>
+{% endif %}</div>
 </section>
 <section class="panel">
   <h2>Categorias</h2>
