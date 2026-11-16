@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Categorias | Segredos da Chef{% endblock %}
+{% block content %}
+<section class="panel"><h1>Categorias</h1><p class="muted">As receitas precisam estar vinculadas a uma categoria existente.</p><div class="toolbar"><a class="btn" href="{% url 'receitas:categoria_create' %}">+ Cadastrar categoria</a><a class="btn secondary" href="{% url 'receitas:receita_list' %}">Voltar às receitas</a></div>
+{% if categorias %}<div class="table-wrap"><table><thead><tr><th>Ordem</th><th>Nome</th><th>Slug (URL)</th><th>Receitas vinculadas</th><th>Ações</th></tr></thead><tbody>{% for categoria in categorias %}<tr><td>{{ categoria.ordem }}</td><td>{{ categoria.nome }}</td><td>{{ categoria.slug }}</td><td>{{ categoria.receitas.count }}</td><td><div class="actions"><a class="btn secondary" href="{% url 'receitas:categoria_update' categoria.pk %}">Editar</a><a class="btn danger" href="{% url 'receitas:categoria_delete' categoria.pk %}">Excluir</a></div></td></tr>{% endfor %}</tbody></table></div>{% else %}<p>Nenhuma categoria cadastrada. Cadastre uma para depois criar receitas.</p>{% endif %}</section>
+{% endblock %}

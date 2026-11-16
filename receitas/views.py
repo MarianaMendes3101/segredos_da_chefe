@@ -1,62 +1,130 @@
-from django.http import request
-from django.shortcuts import render, get_object_or_404
-from .models import Receita, Categoria
-from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
-from .models import Receita
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-# Função auxiliar para verificar se o usuário é Administrador/Staff
-def is_admin(user):
-    return user.is_authenticated and user.is_staff
-@user_passes_test(is_admin, login_url='/login/')
-def cadastrar_receita(request):
-    if request.method == 'POST':
-        # Lógica para salvar a receita no banco de dados
-        pass
-    return render(request, 'web/cadastrar_receita.html')
+from .forms import CategoriaForm, ReceitaForm
+from .models import Categoria, Receita
+
+
+class AdministradorMixin(LoginRequiredMixin, UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff
+
+
 
 def index(request):
-   destaques = Receita.objects.all()
-
-   context = {
-       'destaques': destaques
-   }
-   return render(request, 'web/index.html', context)
+    return redirect("receitas:receita_list")
 
 
-def home_view(request):
-   return index(request)
+class CategoriaListView(ListView):
+    model = Categoria
+    template_name = "receitas/categoria_list.html"
+    context_object_name = "categorias"
 
 
-def receitas_view(request):
-    receitas = Receita.objects.all().order_by('-id')
-    categorias = Categoria.objects.all()
+class CategoriaCreateView(CreateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = "receitas/form.html"
+    success_url = reverse_lazy("receitas:categoria_list")
+    extra_context = {"titulo_pagina": "Cadastrar categoria", "voltar_url": "receitas:categoria_list", "tipo_registro": "categoria"}
 
-    # Busca por título
-    termo = request.GET.get('s') or request.GET.get('busca')
-
-    if termo:
-        receitas = receitas.filter(titulo__icontains=termo)
-
-    # Filtro por categoria
-    categoria_slug = request.GET.get('categoria')
-
-    if categoria_slug:
-        receitas = receitas.filter(categoria__slug=categoria_slug)
-
-    context = {
-        'receitas': receitas,
-        'categorias': categorias,
-    }
-
-    return render(request, 'web/receita.html', context)
+    def form_valid(self, form):
+        messages.success(self.request, "Categoria cadastrada com sucesso.")
+        return super().form_valid(form)
 
 
-def receita(request, id):
-   receita_unica = get_object_or_404(Receita, pk=id)
-   context = {
-       'receita': receita_unica
-   }
-   return render(request, 'web/receita.html', context)
+class CategoriaUpdateView(UpdateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = "receitas/form.html"
+    success_url = reverse_lazy("receitas:categoria_list")
+    extra_context = {"titulo_pagina": "Editar categoria", "voltar_url": "receitas:categoria_list", "tipo_registro": "categoria"}
+
+    def form_valid(self, form):
+        messages.success(self.request, "Categoria atualizada com sucesso.")
+        return super().form_valid(form)
 
 
+class CategoriaDeleteView(DeleteView):
+    model = Categoria
+    template_name = "receitas/confirm_delete.html"
+    success_url = reverse_lazy("receitas:categoria_list")
+    extra_context = {"titulo_pagina": "Excluir categoria", "voltar_url": "receitas:categoria_list"}
+
+    def form_valid(self, form):
+        try:
+            response = super().form_valid(form)
+        except ProtectedError:
+            messages.error(self.request, "Esta categoria possui receitas vinculadas. Remova ou altere essas receitas antes de excluí-la.")
+            return redirect("receitas:categoria_list")
+        messages.success(self.request, "Categoria excluída com sucesso.")
+        return response
+
+
+class ReceitaListView(ListView):
+    model = Receita
+    template_name = "receitas/receita_list.html"
+    context_object_name = "receitas"
+
+    def get_queryset(self):
+        queryset = Receita.objects.select_related("categoria")
+        termo = self.request.GET.get("s", "").strip()
+        categoria = self.request.GET.get("categoria", "").strip()
+        if termo:
+            queryset = queryset.filter(titulo__icontains=termo)
+        if categoria.isdigit():
+            queryset = queryset.filter(categoria_id=int(categoria))
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categorias"] = Categoria.objects.all()
+        context["termo_busca"] = self.request.GET.get("s", "")
+        context["categoria_selecionada"] = self.request.GET.get("categoria", "")
+        return context
+
+
+class ReceitaDetailView(DetailView):
+    model = Receita
+    template_name = "receitas/receita_detail.html"
+    context_object_name = "receita"
+
+
+class ReceitaCreateView(CreateView):
+    model = Receita
+    form_class = ReceitaForm
+    template_name = "receitas/form.html"
+    success_url = reverse_lazy("receitas:receita_list")
+    extra_context = {"titulo_pagina": "Cadastrar receita", "voltar_url": "receitas:receita_list", "tipo_registro": "receita"}
+
+    def form_valid(self, form):
+        messages.success(self.request, "Receita cadastrada com sucesso.")
+        return super().form_valid(form)
+
+
+class ReceitaUpdateView(UpdateView):
+    model = Receita
+    form_class = ReceitaForm
+    template_name = "receitas/form.html"
+    success_url = reverse_lazy("receitas:receita_list")
+    extra_context = {"titulo_pagina": "Editar receita", "voltar_url": "receitas:receita_list", "tipo_registro": "receita"}
+
+    def form_valid(self, form):
+        messages.success(self.request, "Receita atualizada com sucesso.")
+        return super().form_valid(form)
+
+
+class ReceitaDeleteView(DeleteView):
+    model = Receita
+    template_name = "receitas/confirm_delete.html"
+    success_url = reverse_lazy("receitas:receita_list")
+    extra_context = {"titulo_pagina": "Excluir receita", "voltar_url": "receitas:receita_list"}
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Receita excluída com sucesso.")
+        return response

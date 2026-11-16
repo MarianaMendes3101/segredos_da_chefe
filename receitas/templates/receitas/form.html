@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ titulo_pagina }} | Segredos da Chef{% endblock %}
+{% block content %}
+<section class="panel"><h1>{{ titulo_pagina }}</h1><p class="muted">Preencha os campos abaixo. Campos marcados como obrigatórios precisam ser preenchidos.</p>
+<form method="post" enctype="multipart/form-data" novalidate>{% csrf_token %}
+  {% if form.non_field_errors %}<div class="field-errors">{{ form.non_field_errors }}</div>{% endif %}
+  {% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>{{ field }}{% if field.help_text %}<p class="helptext">{{ field.help_text }}</p>{% endif %}{% if field.errors %}<div class="field-errors">{{ field.errors }}</div>{% endif %}</div>{% endfor %}
+  <div class="form-actions"><button type="submit">Salvar</button><a class="btn secondary" href="{% url voltar_url %}">Cancelar</a></div>
+</form></section>
+{% endblock %}

@@ -1,14 +1,21 @@
-# Create your views here.
 from django.shortcuts import render
+from receitas.models import Categoria, Receita
+from usuarios.models import Usuario
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
-def index(request):
-    return render(request, 'web/index.html')
+def home(request):
+    destaques = Receita.objects.filter(destaque=True).select_related("categoria")[:6]
+    recentes = Receita.objects.select_related("categoria").all()[:6]
+    return render(request, "web/index.html", {"destaques": destaques, "recentes": recentes, "categorias": Categoria.objects.all()})
+
+@login_required
+@user_passes_test(lambda user: user.is_staff)
+
+
 def painel(request):
-    return render(request, 'web/painel.html')
-def contato(request):
-    return render(request, 'web/contato.html')
-def login(request):
-    return render(request, 'web/login.html')
-def receita(request):
-    return render(request, 'web/receita.html')
+    return render(request, "web/painel.html", {
+        "total_receitas": Receita.objects.count(),
+        "total_usuarios": Usuario.objects.count(),
+        "total_categorias": Categoria.objects.count(),
+    })
