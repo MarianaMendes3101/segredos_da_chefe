@@ -53,16 +53,19 @@ class CategoriaDeleteView(DeleteView):
     model = Categoria
     template_name = "receitas/confirm_delete.html"
     success_url = reverse_lazy("receitas:categoria_list")
-    extra_context = {"titulo_pagina": "Excluir categoria", "voltar_url": "receitas:categoria_list"}
+    extra_context = {
+        "titulo_pagina": "Excluir categoria",
+        "voltar_url": "receitas:categoria_list"
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["quantidade_receitas"] = self.object.receitas.count()
+        return context
 
     def form_valid(self, form):
-        try:
-            response = super().form_valid(form)
-        except ProtectedError:
-            messages.error(self.request, "Esta categoria possui receitas vinculadas. Remova ou altere essas receitas antes de excluí-la.")
-            return redirect("receitas:categoria_list")
         messages.success(self.request, "Categoria excluída com sucesso.")
-        return response
+        return super().form_valid(form)
 
 
 class ReceitaListView(ListView):
