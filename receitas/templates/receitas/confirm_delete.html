@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}{{ titulo_pagina }} | Segredos da Chef{% endblock %}
+
 {% block content %}
-<section class="panel"><h1>{{ titulo_pagina }}</h1><p>Tem certeza de que deseja excluir <strong>{{ object }}</strong>?</p><p class="muted">Esta ação não pode ser desfeita.</p><form method="post">{% csrf_token %}<div class="form-actions"><button class="btn danger" type="submit">Sim, excluir</button><a class="btn secondary" href="{% url voltar_url %}">Cancelar</a></div></form></section>
+<section class="panel">
+    <h1>{{ titulo_pagina }}</h1>
+    <p>Tem certeza de que deseja excluir <strong>{{ object }}</strong>?</p>
+
+    {% if quantidade_receitas > 0 %}
+        <p class="muted">
+            Atenção! Existem {{ quantidade_receitas }} receitas vinculadas.
+            Todas também serão excluídas.
+        </p>
+    {% endif %}
+
+    <p class="muted">Esta ação não pode ser desfeita.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button class="btn danger" type="submit">Sim, excluir</button>
+            <a class="btn secondary" href="{% url voltar_url %}">Cancelar</a>
+        </div>
+    </form>
+</section>
 {% endblock %}

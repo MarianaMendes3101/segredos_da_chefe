@@ -48,6 +48,8 @@ class CategoriaForm(forms.ModelForm):
 
 
 class ReceitaForm(forms.ModelForm):
+    imagem = forms.ImageField(required=False, label="Imagem da Receita")
+
     slug = forms.SlugField(
         required=False,
         label="Slug / URL",
