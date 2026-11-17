@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Início | Os Segredos da Chef{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo à nossa cozinha!</h1>
+<p>Descubra sabores e explore nossas receitas.</p>
+
+<a href="{% url 'receitas:receita_list' %}">
+    Explorar receitas
+</a>
+{% endblock %}

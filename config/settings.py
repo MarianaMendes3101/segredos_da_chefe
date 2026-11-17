@@ -47,19 +47,19 @@ ROOT_URLCONF = 'config.urls'
 
 
 TEMPLATES = [
-   {
-       'BACKEND': 'django.template.backends.django.DjangoTemplates',
-       'DIRS': [],
-       'APP_DIRS': True,
-       'OPTIONS': {
-           'context_processors': [
-               'django.template.context_processors.debug',
-               'django.template.context_processors.request',
-               'django.contrib.auth.context_processors.auth',
-               'django.contrib.messages.context_processors.messages',
-           ],
-       },
-   },
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
 ]
 
 
@@ -118,6 +118,8 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = 'web:painel'  # Para onde vai após o login bem-sucedido (ex: Home)
-LOGOUT_REDIRECT_URL = '/'  # Para onde vai após sair da conta
+LOGIN_URL = 'usuarios:login'
 
+LOGIN_REDIRECT_URL = 'web:index'
+
+LOGOUT_REDIRECT_URL = '/'

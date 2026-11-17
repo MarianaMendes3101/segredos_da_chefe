@@ -1,23 +1,47 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import ContatoForm
 from .models import Contato
 
 
-def contato_view(request):
-   if request.method == 'POST':
-       nome = request.POST.get('nome')
-       email = request.POST.get('email')
-       mensagem = request.POST.get('mensagem')
+def criar_contato(request):
+    if request.method == "POST":
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Mensagem enviada com sucesso! Obrigado pelo contato.")
+            return redirect("contato:criar")
+        messages.error(request, "Confira os campos destacados e tente novamente.")
+    else:
+        form = ContatoForm()
+    return render(request, "contato/contato_form.html", {"form": form})
 
 
-       if nome and email and mensagem:
-           Contato.objects.create(
-               nome=nome,
-               email=email,
-               mensagem=mensagem
-           )
-           messages.success(request, 'Mensagem enviada com sucesso!')
-           return redirect('contato')
+@staff_member_required
+def lista_contatos(request):
+    return render(request, "contato/contato_list.html", {"contatos": Contato.objects.order_by("-data_envio")})
 
 
-   return render(request, 'contato/contato.html')
+@staff_member_required
+def editar_contato(request, pk):
+    contato = get_object_or_404(Contato, pk=pk)
+    if request.method == "POST":
+        form = ContatoForm(request.POST, instance=contato)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Contato atualizado com sucesso.")
+            return redirect("contato:lista")
+    else:
+        form = ContatoForm(instance=contato)
+    return render(request, "contato/contato_form.html", {"form": form, "contato": contato, "modo_edicao": True})
+
+
+@staff_member_required
+def excluir_contato(request, pk):
+    contato = get_object_or_404(Contato, pk=pk)
+    if request.method == "POST":
+        contato.delete()
+        messages.success(request, "Mensagem excluída com sucesso.")
+        return redirect("contato:lista")
+    return render(request, "contato/contato_confirm_delete.html", {"contato": contato})

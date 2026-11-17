@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}{{ titulo_pagina }} | Segredos da Chef{% endblock %}
+{% block content %}<section class="panel"><h1>{{ titulo_pagina }}</h1><form method="post">{% csrf_token %}{% for field in form %}<label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.errors %}<div class="field-errors">{{ field.errors }}</div>{% endif %}{% endfor %}<div class="form-actions"><button type="submit">Salvar</button><a class="btn secondary" href="{% url 'usuarios:lista' %}">Cancelar</a></div></form></section>{% endblock %}

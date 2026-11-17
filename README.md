@@ -24,20 +24,20 @@ As tecnologias utilizadas no desenvolvimento do projeto são:
 
 ## Equipe
 
-| Integrante | Responsabilidade Geral no Projeto |
-| :--- | :--- |
-| **Mariana Nunes Mendes** | Desenvolvimento e manutenção dos apps `usuarios`, `core` e `web` (autenticação, funcionalidades centrais e integração web). |
-| **Hemilly Eduarda De Oliveira D.** | Configurações globais do projeto (`config`) e estilização visual das interfaces (`CSS`). |
-| **Geovanna dos Santos Favaleça** | Desenvolvimento e gerenciamento do app `receitas` (catálogo, destaques, busca e filtros). |
-| **Jhennyfer Rodrigues dos Santos L.** | Desenvolvimento do app `contato` e estruturação das páginas do portal em `HTML`. |
+| Integrante                                  | Responsabilidade Geral no Projeto |
+|:--------------------------------------------| :--- |
+| **Mariana Nunes Mendes**                    | Desenvolvimento e manutenção dos apps `usuarios`, `core` e `web` (autenticação, funcionalidades centrais e integração web). |
+| **Hemilly Eduarda Dellarmelino Oliveira**   | Configurações globais do projeto (`config`) e estilização visual das interfaces (`CSS`). |
+| **Geovanna Favaleça Santos**                | Desenvolvimento e gerenciamento do app `receitas` (catálogo, destaques, busca e filtros). |
+| **Jhennyfer dos Santos Rodrigues Lecheski** | Desenvolvimento do app `contato` e estruturação das páginas do portal em `HTML`. |
 
 ## Apps Django
 
 O projeto é gerenciado pelo diretório de configurações `config/` e organizado nos seguintes aplicativos Django:
 
-* **`receitas`** *(Responsável: Geovanna dos Santos Favaleça)*: Aplicativo principal do catálogo culinário. Gerencia a página inicial com as receitas em destaque, a biblioteca completa de receitas, a busca por texto integrada entre as páginas, os filtros por categoria e ocasião de consumo e a ordenação dos resultados.
+* **`receitas`** *(Responsável: Geovanna Favaleça)*: Aplicativo principal do catálogo culinário. Gerencia a página inicial com as receitas em destaque, a biblioteca completa de receitas, a busca por texto integrada entre as páginas, os filtros por categoria e ocasião de consumo e a ordenação dos resultados.
 * **`usuarios`** *(Responsável: Mariana Nunes Mendes)*: Aplicativo responsável pela autenticação de contas e pelo modelo de usuário customizado do projeto (`AUTH_USER_MODEL = 'usuarios.Usuario'`), controlando os fluxos de login e logout.
-* **`contato`** *(Responsável: Jhennyfer Rodrigues dos Santos L.)*: Aplicativo destinado ao recebimento, validação e armazenamento das mensagens enviadas pelos usuários por meio da página de contato.
+* **`contato`** *(Responsável: Jhennyfer dos Santos L.)*: Aplicativo destinado ao recebimento, validação e armazenamento das mensagens enviadas pelos usuários por meio da página de contato.
 * **`core`** *(Responsável: Mariana Nunes Mendes)*: Aplicativo central para organização de recursos base e funcionalidades compartilhadas entre os módulos do sistema.
 * **`web`** *(Responsável: Mariana Nunes Mendes)*: Aplicativo voltado à camada de integração web do portal, reunindo rotas auxiliares (`receitas_urls.py`, `contato_urls.py`) e a estrutura de templates em `web/templates/web/`.
 
@@ -45,7 +45,7 @@ O projeto é gerenciado pelo diretório de configurações `config/` e organizad
 
 Abaixo estão detalhados os Models e Views desenvolvidos para cada aplicativo e a respectiva integrante responsável:
 
-### App `receitas` — *Responsável: Geovanna dos Santos Favaleça*
+### App `receitas` — *Responsável: Geovanna Favaleça*
 
 * **Models:**
   * `Receita`: Armazena os dados das receitas cadastradas (`titulo`, `tempo_preparo`, `descricao`, `modo_preparo`, `imagem`, `categoria`, `ocasiao`).
@@ -62,7 +62,7 @@ Abaixo estão detalhados os Models e Views desenvolvidos para cada aplicativo e 
 * **Views:**
   * `LoginView` e views de autenticação (`usuarios/views.py`): Gerenciam a tela de login personalizada (`login.html`), autenticação de acesso e redirecionamentos de login e logout.
 
-### App `contato` — *Responsável: Jhennyfer Rodrigues dos Santos L.*
+### App `contato` — *Responsável: Jhennyfer dos Santos L.*
 
 * **Models:**
   * `Contato`: Armazena as mensagens enviadas pelo formulário de contato (substituindo o model inicial `MensagemContato`).
@@ -79,16 +79,16 @@ Abaixo estão detalhados os Models e Views desenvolvidos para cada aplicativo e 
 
 ## Arquivos e Responsabilidades
 
-| Arquivo(s) | Responsabilidade / Descrição | Integrante Responsável |
-| :--- | :--- | :--- |
-| `config/settings.py`, `config/urls.py`, `config/wsgi.py`, `config/asgi.py`, `requirements.txt` e `.gitignore` | Configurações globais do Django, definição de `AUTH_USER_MODEL`, redirecionamentos de login/logout, diretórios estáticos/mídia, roteamento principal (`admin/`, `receitas/`, `contato/`, `usuarios/`) e gestão de dependências. | **Hemilly Eduarda De Oliveira D.** |
-| `static/css/layout.css`, `static/css/receita.css` e `static/css/form.css` | Identidade visual do portal, layout responsivo, alinhamento dos cards em Flexbox e estilização dos formulários e da página de login. | **Hemilly Eduarda De Oliveira D.** |
-| `receitas/models.py`, `receitas/views.py`, `receitas/urls.py` e `receitas/admin.py` | Definição dos models `Receita` e `Categoria`, lógica da página inicial, pesquisa integrada, filtros da biblioteca, rotas do app e registro no Django Admin. | **Geovanna dos Santos Favaleça** |
-| `contato/models.py`, `contato/views.py`, `contato/urls.py` e `contato/admin.py` | Definição do model `Contato`, processamento das mensagens enviadas, rotas da página de contato e gestão no painel administrativo. | **Jhennyfer Rodrigues dos Santos L.** |
-| Templates HTML (`index.html`, `receita.html`, `login.html`, `contato.html`, `painel.html` em `web/templates/web/`) | Estruturação semântica das páginas, formulários de busca integrados entre a home e a biblioteca, modal de detalhes/modo de preparo (com JS embutido) e tela de login. | **Jhennyfer Rodrigues dos Santos L.** |
-| `usuarios/models.py`, `usuarios/views.py`, `usuarios/urls.py` e `usuarios/admin.py` | Implementação do model `Usuario`, controle de login/logout, rotas de autenticação e administração de usuários. | **Mariana Nunes Mendes** |
-| `core/models.py`, `core/views.py`, `core/urls.py` e `core/admin.py` | Desenvolvimento das funcionalidades centrais e recursos compartilhados no app `core`. | **Mariana Nunes Mendes** |
-| `web/models.py`, `web/views.py`, `web/urls.py`, `web/receitas_urls.py`, `web/contato_urls.py` e `web/admin.py` | Integração da camada web, organização de sub-rotas e ligação entre views e templates do diretório `web/templates/web/`. | **Mariana Nunes Mendes** |
+| Arquivo(s) | Responsabilidade / Descrição | Integrante Responsável           |
+| :--- | :--- |:---------------------------------|
+| `config/settings.py`, `config/urls.py`, `config/wsgi.py`, `config/asgi.py`, `requirements.txt` e `.gitignore` | Configurações globais do Django, definição de `AUTH_USER_MODEL`, redirecionamentos de login/logout, diretórios estáticos/mídia, roteamento principal (`admin/`, `receitas/`, `contato/`, `usuarios/`) e gestão de dependências. | **Hemilly Eduarda Dellarmelino** |
+| `static/css/layout.css`, `static/css/receita.css` e `static/css/form.css` | Identidade visual do portal, layout responsivo, alinhamento dos cards em Flexbox e estilização dos formulários e da página de login. | **Hemilly Eduarda Dellarmelino** |
+| `receitas/models.py`, `receitas/views.py`, `receitas/urls.py` e `receitas/admin.py` | Definição dos models `Receita` e `Categoria`, lógica da página inicial, pesquisa integrada, filtros da biblioteca, rotas do app e registro no Django Admin. | **Geovanna Favaleça**            |
+| `contato/models.py`, `contato/views.py`, `contato/urls.py` e `contato/admin.py` | Definição do model `Contato`, processamento das mensagens enviadas, rotas da página de contato e gestão no painel administrativo. | **Jhennyfer dos Santos L.**      |
+| Templates HTML (`index.html`, `receita.html`, `login.html`, `contato.html`, `painel.html` em `web/templates/web/`) | Estruturação semântica das páginas, formulários de busca integrados entre a home e a biblioteca, modal de detalhes/modo de preparo (com JS embutido) e tela de login. | **Jhennyfer dos Santos L.**      |
+| `usuarios/models.py`, `usuarios/views.py`, `usuarios/urls.py` e `usuarios/admin.py` | Implementação do model `Usuario`, controle de login/logout, rotas de autenticação e administração de usuários. | **Mariana Nunes Mendes**         |
+| `core/models.py`, `core/views.py`, `core/urls.py` e `core/admin.py` | Desenvolvimento das funcionalidades centrais e recursos compartilhados no app `core`. | **Mariana Nunes Mendes**         |
+| `web/models.py`, `web/views.py`, `web/urls.py`, `web/receitas_urls.py`, `web/contato_urls.py` e `web/admin.py` | Integração da camada web, organização de sub-rotas e ligação entre views e templates do diretório `web/templates/web/`. | **Mariana Nunes Mendes**         |
 
 ## Branches e Desenvolvimento Individual
 
@@ -96,12 +96,12 @@ Para manter o código organizado e evitar conflitos durante o desenvolvimento em
 
 Cada integrante utiliza sua própria branch individual para implementar as atividades sob sua responsabilidade, permitindo identificar claramente a desenvolvedora de cada conjunto de alterações:
 
-| Integrante | Branch Principal / Atual | Outras Branches Criadas no Repositório |
-| :--- | :--- | :--- |
-| **Mariana Nunes Mendes** | `mari` | `mariana` |
-| **Hemilly Eduarda De Oliveira D.** | `duda` | `hemilly` |
-| **Geovanna dos Santos Favaleça** | `geovanna` | `manana` |
-| **Jhennyfer Rodrigues dos Santos L.** | `jhenn` / `jhen` | `jhenny` |
+| Integrante                            | Branch Principal / Atual | Outras Branches Criadas no Repositório  |
+|:--------------------------------------|:-------------------------|:----------------------------------------|
+| **Mariana Nunes Mendes**              | `mari`                   | `mariana`                               |
+| **Hemilly Eduarda De Oliveira D.**    | `duda`                   | `hemilly`                               |
+| **Geovanna dos Santos Favaleça**      | `geovanna`               | `manana`                                |
+| **Jhennyfer Rodrigues dos Santos L.** | `jhenn` /  `jhen`        | `jhenny`/ `jhe`                         |
 
 ### Fluxo recomendado no Git
 

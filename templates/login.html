@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+
+{% block title %}Entrar | Os Segredos da Chef{% endblock %}
+
+{% block content %}
+<section class="panel" style="max-width: 450px; margin: 40px auto;">
+    <h1>Entrar</h1>
+    <p class="muted">Acesse sua conta para continuar.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+
+        <button type="submit">Entrar</button>
+    </form>
+</section>
+{% endblock %}
