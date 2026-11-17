@@ -6,7 +6,8 @@
   <span class="tag">Cozinha caseira</span>
   <h1>Receitas feitas com amor</h1>
   <p>Descubra ideias deliciosas, organize suas receitas favoritas e compartilhe seus segredos na cozinha.</p>
-  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_list' %}">Explorar receitas</a>{% if user.is_staff %}
+  <div class="toolbar"><a class="btn" href="{% url 'receitas:receita_list' %}">Explorar receitas</a>
+      {% if user.is_staff %}
     <a class="btn light" href="{% url 'receitas:receita_create' %}">
         Cadastrar receita
     </a>
@@ -14,10 +15,36 @@
 </section>
 <section class="panel">
   <h2>Categorias</h2>
-  {% if categorias %}<div class="cards">{% for categoria in categorias %}<article class="recipe-card"><h3>{{ categoria.nome }}</h3><p class="muted">{{ categoria.receitas.count }} receita(s)</p><a class="btn light" href="{% url 'receitas:receita_list' %}?categoria={{ categoria.id }}">Ver receitas</a></article>{% endfor %}</div>{% else %}<p>Ainda não há categorias cadastradas. <a href="{% url 'receitas:categoria_create' %}">Cadastre a primeira categoria</a>.</p>{% endif %}
+  {% if categorias %}<div class="cards">
+      {% for categoria in categorias %}
+          <article class="recipe-card">
+              <h3>{{ categoria.nome }}</h3>
+              <p class="muted">{{ categoria.receitas.count }} receita(s)</p>
+              <a class="btn light" href="{% url 'receitas:receita_list' %}?categoria={{ categoria.id }}">Ver receitas</a>
+          </article>
+      {% endfor %}
+  </div>
+  {% else %}
+      <p>Ainda não há categorias cadastradas. <a href="{% url 'receitas:categoria_create' %}">Cadastre a primeira categoria</a>.</p>
+  {% endif %}
 </section>
 <section class="panel">
   <h2>Receitas em destaque</h2>
-  {% if destaques %}<div class="cards">{% for receita in destaques %}<article class="recipe-card">{% if receita.imagem %}<img src="{{ receita.imagem.url }}" alt="{{ receita.titulo }}" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px">{% endif %}<h3>{{ receita.titulo }}</h3><p>{{ receita.descricao|truncatewords:24 }}</p><p><span class="tag">{{ receita.categoria.nome }}</span> · {{ receita.tempo_preparo }}</p><a class="btn" href="{% url 'receitas:receita_detail' receita.pk %}">Ver receita</a></article>{% endfor %}</div>{% else %}<p>As receitas marcadas como destaque aparecerão aqui. Por enquanto, veja todas as receitas cadastradas.</p><a class="btn" href="{% url 'receitas:receita_list' %}">Ver todas</a>{% endif %}
+  {% if destaques %}
+      <div class="cards">{% for receita in destaques %}
+          <article class="recipe-card">{% if receita.imagem %}
+              <img src="{{ receita.imagem.url }}" alt="{{ receita.titulo }}" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px">
+          {% endif %}
+              <h3>{{ receita.titulo }}</h3>
+              <p>{{ receita.descricao|truncatewords:24 }}</p>
+              <p><span class="tag">{{ receita.categoria.nome }}</span> · {{ receita.tempo_preparo }}</p>
+              <a class="btn" href="{% url 'receitas:receita_detail' receita.pk %}">Ver receita</a>
+          </article>
+      {% endfor %}
+      </div>
+  {% else %}
+      <p>As receitas marcadas como destaque aparecerão aqui. Por enquanto, veja todas as receitas cadastradas.</p>
+      <a class="btn" href="{% url 'receitas:receita_list' %}">Ver todas</a>
+  {% endif %}
 </section>
 {% endblock %}

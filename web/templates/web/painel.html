@@ -3,5 +3,22 @@
 {% block content %}
 <section class="panel"><h1>Painel de gerenciamento</h1>
     <p class="muted">Resumo dos cadastros armazenados no banco de dados.</p>
-    <div class="cards"><article class="recipe-card"><h3>{{ total_receitas }}</h3><p>Receitas</p><a class="btn" href="{% url 'receitas:receita_list' %}">Gerenciar</a></article><article class="recipe-card"><h3>{{ total_categorias }}</h3><p>Categorias</p><a class="btn" href="{% url 'receitas:categoria_list' %}">Gerenciar</a></article><article class="recipe-card"><h3>{{ total_usuarios }}</h3><p>Usuários</p><a class="btn" href="{% url 'usuarios:lista' %}">Gerenciar usuários</a></article></div><p class="muted" style="margin-top:18px">A gestão de usuários exige uma conta administrativa (staff).</p></section>
+    <div class="cards">
+        <article class="recipe-card">
+            <h3>{{ total_receitas }}</h3>
+            <p>Receitas</p><a class="btn" href="{% url 'receitas:receita_list' %}">Gerenciar</a>
+        </article>
+        <article class="recipe-card">
+            <h3>{{ total_categorias }}</h3>
+            <p>Categorias</p>
+            <a class="btn" href="{% url 'receitas:categoria_list' %}">Gerenciar</a>
+        </article>
+        <article class="recipe-card">
+            <h3>{{ total_usuarios }}</h3>
+            <p>Usuários</p>
+            <a class="btn" href="{% url 'usuarios:lista' %}">Gerenciar usuários</a>
+        </article>
+    </div>
+    <p class="muted" style="margin-top:18px">A gestão de usuários exige uma conta administrativa (staff).</p>
+</section>
 {% endblock %}
